@@ -1,3 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Koulen&family=Ubuntu+Condensed&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1,
+h2,
+h3 {
+  line-height: 1.6;
+  @apply font-koulen;
+}
+
+body {
+  @apply px-8 bg-bg dark:bg-bgDark;
+}
+
+* {
+  @apply transition-colors duration-500;
+}
+
+/* Tailwind Styles */
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-col-center {
+  @apply flex flex-col justify-center items-center align-middle;
+}
+
+.flex-start {
+  @apply flex justify-start items-start;
+}
+
+.flex-end {
+  @apply flex justify-end items-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+.preload {
+  @apply transition-none;
+}

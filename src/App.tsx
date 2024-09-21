@@ -1,5 +1,11 @@
+import TopBar from "./components/TopBar";
+
 const App = () => {
-  return <h1 className="text-3xl font-bold underline">OPERRANDS</h1>;
+  return (
+    <div>
+      <TopBar />
+    </div>
+  );
 };
 
 export default App;
