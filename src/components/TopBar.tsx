@@ -1,8 +1,5 @@
-import {
-  LightModeOutlined,
-  DarkModeOutlined,
-  NotificationsOutlined,
-} from "@mui/icons-material";
+import { Sun, Moon, Bell } from "lucide-react";
+
 import { useState } from "react";
 
 const TopBar = () => {
@@ -17,34 +14,26 @@ const TopBar = () => {
       localStorage.setItem("theme", "dark");
     }
     setDarkMode(!darkMode);
-    console.log(localStorage.getItem("theme"));
   };
 
   return (
-    <div className="flex-between w-full py-8">
-      <a href="/" className="font-koulen text-3xl">
-        <span className="text-black dark:text-white">OP</span>
-        <span className="text-primary dark:text-primaryDark">ERRANDS</span>
+    <div className="flex-between w-full py-5">
+      <a href="/" className="text-2xl">
+        <span className="font-koulen ">OP</span>
+        <span className="font-koulen text-primary dark:text-primaryDark">
+          ERRANDS
+        </span>
       </a>
-      <div className="flex-between w-20">
-        <button onClick={toggleDarkMode}>
+      <div className="flex-between">
+        <button onClick={toggleDarkMode} className="mr-6">
           {darkMode ? (
-            <DarkModeOutlined
-              className="dark:text-white"
-              sx={{ fontSize: 30 }}
-            />
+            <Moon className="icon-style" />
           ) : (
-            <LightModeOutlined
-              className="dark:text-white"
-              sx={{ fontSize: 30 }}
-            />
+            <Sun className="icon-style" />
           )}
         </button>
 
-        <NotificationsOutlined
-          className="dark:text-white"
-          sx={{ fontSize: 30 }}
-        />
+        <Bell className="icon-style" />
       </div>
     </div>
   );
