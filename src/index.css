@@ -36,7 +36,7 @@ body {
   @apply w-full bg-bg dark:bg-bgDark dark:md:bg-opacity-0 md:bg-opacity-0 py-4 md:w-fit justify-center left-0 md:left-auto md:h-dvh gap-8 fixed bottom-0 md:top-0 flex md:flex-col md:no-transition;
 }
 .icon-style {
-  @apply dark:text-white hover:text-primary dark:hover:text-primaryDark no-transition;
+  @apply dark:text-white no-transition;
 }
 
 /* Pages */
