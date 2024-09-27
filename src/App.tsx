@@ -16,6 +16,7 @@ const App = () => {
         <main className="w-full h-screen md:ml-12 pt-5 md:pl-5">
           <Routes>
             <Route index element={<HomePage />} />
+            {/* change these routes to /errands/pagename when landing page and login pages are available*/}
             <Route path="/" element={<HomePage />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/categories" element={<CategoriesPage />} />

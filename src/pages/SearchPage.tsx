@@ -1,8 +1,8 @@
 const SearchPage = () => {
   return (
     <div>
-      <span className="title text-2xl">Search </span>
-      <span className="title text-2xl text-primary dark:text-primaryDark">
+      <span className="text-2xl">Search </span>
+      <span className="text-2xl text-primary dark:text-primaryDark">
         Errands
       </span>
     </div>

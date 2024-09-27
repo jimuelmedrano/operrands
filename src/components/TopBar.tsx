@@ -1,5 +1,4 @@
-import { Sun, Moon, Bell } from "lucide-react";
-
+import Icon from "./Icon";
 import { useState } from "react";
 
 const TopBar = () => {
@@ -26,14 +25,10 @@ const TopBar = () => {
       </a>
       <div className="flex-between">
         <button onClick={toggleDarkMode} className="mr-6">
-          {darkMode ? (
-            <Moon className="icon-style" />
-          ) : (
-            <Sun className="icon-style" />
-          )}
+          {darkMode ? <Icon name="Moon" /> : <Icon name="Sun" />}
         </button>
 
-        <Bell className="icon-style" />
+        <Icon name="Bell" />
       </div>
     </div>
   );

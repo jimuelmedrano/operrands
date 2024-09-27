@@ -10,7 +10,12 @@ const Icon = ({
 }) => {
   const LucideIcon = icons[name];
 
-  return <LucideIcon className={className} size={size} />;
+  return (
+    <LucideIcon
+      className={"text-black dark:text-white no-transition " + className}
+      size={size}
+    />
+  );
 };
 
 export default Icon;

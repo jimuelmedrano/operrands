@@ -17,3 +17,4 @@ tsconfig.node.tsbuildinfo
 .env
 .npm
 npm-debug.log
+sample-data

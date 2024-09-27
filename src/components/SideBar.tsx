@@ -1,9 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Icon from "./Icon";
 import { useState } from "react";
 
 const SideBar = () => {
-  const [toggle, setToggle] = useState(1);
+  const currentRoute = useLocation();
+  let currentPageID = getCurrentPageID(currentRoute.pathname);
+  const [toggle, setToggle] = useState(currentPageID);
 
   function updateToggle(id: number) {
     setToggle(id);
@@ -47,6 +49,18 @@ const SideBar = () => {
   );
 };
 
+function getCurrentPageID(path: string) {
+  if (path === "/search") {
+    return 2;
+  } else if (path === "/categories") {
+    return 3;
+  } else if (path === "/profile") {
+    return 4;
+  } else {
+    return 1;
+  }
+}
+
 function SidebarItem({
   src,
   icon,
@@ -69,7 +83,7 @@ function SidebarItem({
           (profile ? " md:fixed md:bottom-0 md:mb-8" : "")
         }
       >
-        <Icon name={icon} className="icon-style" />
+        <Icon name={icon} />
       </div>
     </NavLink>
   );
