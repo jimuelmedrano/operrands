@@ -1,3 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Koulen&family=Ubuntu+Condensed&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Theme */
+
+h1,
+h2,
+h3,
+span {
+  @apply font-koulen text-black dark:text-white leading-none;
+}
+
+p {
+  @apply font-ubuntu text-black dark:text-white;
+}
+
+body {
+  @apply px-4 md:px-8 bg-bg dark:bg-bgDark;
+}
+
+* {
+  @apply transition-colors duration-500;
+}
+
+@layer components {
+  .no-transition {
+    @apply transition-all duration-0;
+  }
+}
+
+.text-inverted {
+  @apply text-white dark:text-black;
+}
+
+/* Components */
+.sidebar-style {
+  @apply w-full bg-bg dark:bg-bgDark dark:md:bg-opacity-0 md:bg-opacity-0 py-4 md:w-fit justify-center left-0 md:left-auto md:h-dvh gap-8 fixed bottom-0 md:top-0 flex md:flex-col md:no-transition z-10;
+}
+/* Pages */
+
+/* Tailwind Styles */
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-col-center {
+  @apply flex flex-col justify-center items-center align-middle;
+}
+
+.flex-start {
+  @apply flex justify-start items-start;
+}
+
+.flex-end {
+  @apply flex justify-end items-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+.preload {
+  @apply transition-none;
+}
