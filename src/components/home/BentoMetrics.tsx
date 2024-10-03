@@ -10,29 +10,29 @@ const BentoMetrics = ({
   return (
     <div className="flex-col-center gap-2">
       <div className="flex gap-3">
-        <div className="bg-primary w-36 h-24 rounded-lg flex flex-col p-3 justify-between">
+        <div className="bg-primary dark:bg-primaryDark w-36 h-24 rounded-lg flex flex-col p-3 justify-between">
           <div className="flex">
-            <span className="text-xs text-white">Today's Errands</span>
+            <span className="text-xs text-inverted">Today's Errands</span>
           </div>
           <div className="flex justify-end">
-            <span className="text-4xl text-white">{todayCount}</span>
+            <span className="text-4xl text-inverted">{todayCount}</span>
           </div>
         </div>
-        <div className="bg-primary w-36 h-24 rounded-lg flex flex-col p-3 justify-between">
+        <div className="bg-primary dark:bg-primaryDark w-36 h-24 rounded-lg flex flex-col p-3 justify-between">
           <div className="flex">
-            <span className="text-xs text-white">Overdue Errands</span>
+            <span className="text-xs text-inverted">Overdue Errands</span>
           </div>
           <div className="flex justify-end">
-            <span className="text-4xl text-white">{overdueCount}</span>
+            <span className="text-4xl text-inverted">{overdueCount}</span>
           </div>
         </div>
       </div>
-      <div className="bg-primaryDark w-full rounded-lg flex p-3 justify-between">
+      <div className="bg-primaryDark dark:bg-primary w-full rounded-lg flex p-3 justify-between">
         <div className="flex">
-          <span className="text-xs dark:text-black">All Tasks</span>
+          <span className="text-xs">All Tasks</span>
         </div>
         <div className="flex justify-end">
-          <span className="text-3xl dark:text-black">{allCount}</span>
+          <span className="text-3xl">{allCount}</span>
         </div>
       </div>
     </div>

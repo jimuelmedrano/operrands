@@ -4,17 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Theme */
+
 h1,
 h2,
 h3,
 span {
-  line-height: 1.6;
-  @apply font-koulen text-black dark:text-white;
+  @apply font-koulen text-black dark:text-white leading-none;
 }
 
 p {
-  line-height: 1.6;
-  @apply text-black dark:text-white;
+  @apply font-ubuntu text-black dark:text-white;
 }
 
 body {
@@ -31,9 +31,13 @@ body {
   }
 }
 
+.text-inverted {
+  @apply text-white dark:text-black;
+}
+
 /* Components */
 .sidebar-style {
-  @apply w-full bg-bg dark:bg-bgDark dark:md:bg-opacity-0 md:bg-opacity-0 py-4 md:w-fit justify-center left-0 md:left-auto md:h-dvh gap-8 fixed bottom-0 md:top-0 flex md:flex-col md:no-transition;
+  @apply w-full bg-bg dark:bg-bgDark dark:md:bg-opacity-0 md:bg-opacity-0 py-4 md:w-fit justify-center left-0 md:left-auto md:h-dvh gap-8 fixed bottom-0 md:top-0 flex md:flex-col md:no-transition z-10;
 }
 /* Pages */
 

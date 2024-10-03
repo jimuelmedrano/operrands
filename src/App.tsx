@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import AnnouncementBanner from "./components/AnnouncementBanner";
 import TopBar from "./components/TopBar";
 import SideBar from "./components/SideBar";
 
@@ -10,10 +11,11 @@ import ProfilePage from "./pages/ProfilePage";
 const App = () => {
   return (
     <div className="h-dvh">
+      <AnnouncementBanner />
       <TopBar />
-      <div className="flex">
+      <div className="flex h-full">
         <SideBar />
-        <main className="w-full h-screen md:ml-12 pt-5 md:pl-5">
+        <main className="w-full h-fit md:h-[85%] md:ml-12 md:pl-5">
           <Routes>
             <Route index element={<HomePage />} />
             {/* change these routes to /errands/pagename when landing page and login pages are available*/}

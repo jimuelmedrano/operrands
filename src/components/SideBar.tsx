@@ -4,62 +4,50 @@ import { useState } from "react";
 
 const SideBar = () => {
   const currentRoute = useLocation();
-  let currentPageID = getCurrentPageID(currentRoute.pathname);
-  const [toggle, setToggle] = useState(currentPageID);
+  const [toggle, setToggle] = useState(currentRoute.pathname);
 
-  function updateToggle(id: number) {
-    setToggle(id);
-  }
+  const homePath = "/";
+  const searchPath = "/search";
+  const categoriesPath = "/categories";
+  const profilePath = "/profile";
 
   return (
     <div className="sidebar-style">
-      <div onClick={() => updateToggle(1)}>
+      <div onClick={() => setToggle(homePath)}>
         <SidebarItem
-          src="/"
+          src={homePath}
           icon="House"
-          {...(toggle === 1 ? { active: true } : {})}
+          {...(toggle === homePath ? { active: true } : {})}
         />
       </div>
 
-      <div onClick={() => updateToggle(2)}>
+      <div onClick={() => setToggle(searchPath)}>
         <SidebarItem
-          src="/search"
+          src={searchPath}
           icon="Search"
-          {...(toggle === 2 ? { active: true } : {})}
+          {...(toggle === searchPath ? { active: true } : {})}
         />
       </div>
 
-      <div onClick={() => updateToggle(3)}>
+      <div onClick={() => setToggle(categoriesPath)}>
         <SidebarItem
-          src="/categories"
+          src={categoriesPath}
           icon="Shapes"
-          {...(toggle === 3 ? { active: true } : {})}
+          {...(toggle === categoriesPath ? { active: true } : {})}
         />
       </div>
 
-      <div onClick={() => updateToggle(4)}>
+      <div onClick={() => setToggle(profilePath)}>
         <SidebarItem
-          src="/profile"
+          src={profilePath}
           icon="CircleUser"
-          {...(toggle === 4 ? { active: true } : {})}
+          {...(toggle === profilePath ? { active: true } : {})}
           profile
         />
       </div>
     </div>
   );
 };
-
-function getCurrentPageID(path: string) {
-  if (path === "/search") {
-    return 2;
-  } else if (path === "/categories") {
-    return 3;
-  } else if (path === "/profile") {
-    return 4;
-  } else {
-    return 1;
-  }
-}
 
 function SidebarItem({
   src,
@@ -78,12 +66,12 @@ function SidebarItem({
         className={
           "group p-2 rounded-md" +
           (active
-            ? " bg-primaryDark dark:bg-primary hover:bg-primaryDark dark:hover:bg-primary"
+            ? " bg-primary dark:bg-primaryDark hover:bg-primary dark:hover:bg-primaryDark"
             : " hover:bg-secondary dark:hover:bg-secondaryDark") +
           (profile ? " md:fixed md:bottom-0 md:mb-8" : "")
         }
       >
-        <Icon name={icon} />
+        <Icon name={icon} {...(active ? { inverted: true } : {})} />
       </div>
     </NavLink>
   );

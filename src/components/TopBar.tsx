@@ -16,7 +16,7 @@ const TopBar = () => {
   };
 
   return (
-    <div className="flex-between w-full py-5">
+    <div className="flex-between w-full py-5 mb-5">
       <a href="/" className="text-2xl">
         <span className="font-koulen ">OP</span>
         <span className="font-koulen text-primary dark:text-primaryDark">
