@@ -12,8 +12,15 @@ interface ErrandItemProps {
 function ErrandItem(dataItem: { dataItem: ErrandItemProps }) {
   const dueDate = moment(dataItem.dataItem.due).format("DD-MMM-YYYY");
   const currentDate = moment().format("DD-MMM-YYYY");
+  let dueToday = false;
+  //change the following once api for resetting daily task is available
+  if (dataItem.dataItem.repeat === "daily") {
+    dueToday = true;
+    dataItem.dataItem.due = currentDate;
+  } else {
+    dueToday = dueDate === currentDate ? true : false;
+  }
 
-  const dueToday = dueDate === currentDate ? true : false;
   return (
     <div
       className={

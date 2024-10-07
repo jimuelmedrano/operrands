@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Icon from "../components/Icon";
 import BentoMetrics from "../components/home/BentoMetrics";
-import HomeErrandList from "../components/home/HomeErrandList2";
+import HomeErrandList from "../components/home/HomeErrandList";
 import getHomeErrands from "../../sample-data/getHomeErrands.json";
 
 const HomePage = () => {
