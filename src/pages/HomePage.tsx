@@ -19,7 +19,7 @@ const HomePage = () => {
   return (
     <div className="h-full flex flex-col">
       <div className="flex mb-10">
-        <div className="flex flex-col justify-between h-40 basis-full md:basis-1/2">
+        <div className="flex flex-col justify-between h-32 md:h-full basis-full md:basis-1/2">
           <div>
             <span className="text-2xl text-foreground">Hello, </span>
             <span className="text-2xl text-primary">Jimuel Medrano</span>

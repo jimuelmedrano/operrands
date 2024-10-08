@@ -9,16 +9,13 @@
 h1,
 h2,
 h3,
-span {
+span,
+label {
   @apply font-koulen;
 }
 
 p {
   @apply font-ubuntu;
-}
-
-body {
-  @apply px-4 md:px-8;
 }
 
 @layer components {
@@ -30,14 +27,7 @@ body {
   }
 }
 
-.text-inverted {
-  @apply text-white dark:text-black;
-}
-
 /* Components */
-.sidebar-style {
-  @apply w-full dark:md:bg-opacity-0 md:bg-opacity-0 py-4 md:w-fit justify-center left-0 md:left-auto md:h-dvh gap-8 fixed bottom-0 md:top-0 flex md:flex-col md:no-transition z-10;
-}
 /* Pages */
 
 /* Tailwind Styles */
@@ -118,7 +108,7 @@ body {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 0 0% 3.9%;
+    --background: 0 0% 10%;
 
     --foreground: 0 0% 98%;
 
@@ -173,6 +163,6 @@ body {
     @apply border-border color-transition;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply px-4 md:px-8 bg-background text-foreground;
   }
 }

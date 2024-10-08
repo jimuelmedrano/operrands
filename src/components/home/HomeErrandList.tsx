@@ -1,4 +1,4 @@
-import ErrandItem from "../ErrandItem";
+import ErrandCard from "../ErrandCard";
 import { useState } from "react";
 import Icon from "../Icon";
 
@@ -18,9 +18,11 @@ function HomeErrandList(data: { data: ErrandListProps }) {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (
-    <div className="h-fit md:h-full bg-accent rounded-lg p-4">
+    <div className="h-fit md:h-full bg-accent rounded-xl p-4">
       <div className="flex-between w-full">
-        <span>{data.data.categoryTitle}</span>
+        <span className="text-foreground text-xl">
+          {data.data.categoryTitle}
+        </span>
 
         <button
           onClick={() => setAccordionOpen(!accordionOpen)}
@@ -44,7 +46,7 @@ function HomeErrandList(data: { data: ErrandListProps }) {
       >
         <div className={"flex flex-col gap-3 md:mt-5 overflow-hidden"}>
           {data.data.errands.map((errandItem, index) => (
-            <ErrandItem key={index} dataItem={errandItem} />
+            <ErrandCard key={index} dataItem={errandItem} />
           ))}
         </div>
       </div>
