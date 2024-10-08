@@ -18,17 +18,25 @@ const TopBar = () => {
   return (
     <div className="flex-between w-full py-5 mb-5">
       <a href="/" className="text-2xl">
-        <span className="font-koulen ">OP</span>
-        <span className="font-koulen text-primary dark:text-primaryDark">
-          ERRANDS
-        </span>
+        <span className="text-foreground">OP</span>
+        <span className="text-primary">ERRANDS</span>
       </a>
       <div className="flex-between">
-        <button onClick={toggleDarkMode} className="mr-6">
-          {darkMode ? <Icon name="Moon" /> : <Icon name="Sun" />}
+        <button
+          onClick={toggleDarkMode}
+          className={
+            "mr-6 transition-transform duration-1000 " +
+            (darkMode ? "rotate-0" : "rotate-180")
+          }
+        >
+          {darkMode ? (
+            <Icon name="Moon" className="text-foreground" />
+          ) : (
+            <Icon name="Sun" className="text-foreground" />
+          )}
         </button>
 
-        <Icon name="Bell" />
+        <Icon name="Bell" className="text-foreground" />
       </div>
     </div>
   );

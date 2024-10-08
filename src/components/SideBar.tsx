@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 import Icon from "./Icon";
 import { useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const SideBar = () => {
   const currentRoute = useLocation();
@@ -12,7 +13,7 @@ const SideBar = () => {
   const profilePath = "/profile";
 
   return (
-    <div className="sidebar-style">
+    <div className="w-full py-4 md:w-fit md:left-auto md:h-dvh gap-8 fixed bottom-0 md:top-0 flex-center md:flex-col md:no-transition z-10">
       <div onClick={() => setToggle(homePath)}>
         <SidebarItem
           src={homePath}
@@ -37,14 +38,20 @@ const SideBar = () => {
         />
       </div>
 
-      <div onClick={() => setToggle(profilePath)}>
-        <SidebarItem
-          src={profilePath}
-          icon="CircleUser"
-          {...(toggle === profilePath ? { active: true } : {})}
-          profile
-        />
-      </div>
+      <NavLink to={profilePath}>
+        <Avatar
+          className={
+            "md:absolute md:bottom-0 md:left-0 md:mb-10 w-7 h-7 md:h-9 md:w-9 ring-4 hover:ring-accent " +
+            (toggle === profilePath
+              ? "ring-primary hover:ring-primary "
+              : "ring-transparent")
+          }
+          onClick={() => setToggle(profilePath)}
+        >
+          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+      </NavLink>
     </div>
   );
 };
@@ -53,25 +60,25 @@ function SidebarItem({
   src,
   icon,
   active,
-  profile,
 }: {
   src: string;
   icon: any;
   active?: boolean;
-  profile?: boolean;
 }) {
   return (
     <NavLink to={src}>
       <div
         className={
-          "group p-2 rounded-md" +
+          "group p-2 rounded-md " +
           (active
-            ? " bg-primary dark:bg-primaryDark hover:bg-primary dark:hover:bg-primaryDark"
-            : " hover:bg-secondary dark:hover:bg-secondaryDark") +
-          (profile ? " md:fixed md:bottom-0 md:mb-8" : "")
+            ? "bg-primary hover:bg-primary dark:hover:bg-primaryDark "
+            : "hover:bg-accent ")
         }
       >
-        <Icon name={icon} {...(active ? { inverted: true } : {})} />
+        <Icon
+          name={icon}
+          className={active ? "text-primary-foreground" : "text-foreground"}
+        />
       </div>
     </NavLink>
   );

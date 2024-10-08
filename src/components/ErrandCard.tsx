@@ -1,3 +1,5 @@
+import { Card, CardContent, CardFooter } from "./ui/card";
+import { Checkbox } from "./ui/checkbox";
 import moment from "moment";
 
 interface ErrandItemProps {
@@ -9,8 +11,10 @@ interface ErrandItemProps {
   due: string;
 }
 
-function ErrandItem(dataItem: { dataItem: ErrandItemProps }) {
-  const dueDate = moment(dataItem.dataItem.due).format("DD-MMM-YYYY");
+function ErrandCard(dataItem: { dataItem: ErrandItemProps }) {
+  const dueDate = moment(dataItem.dataItem.due, "DD-MMM-YYYY").format(
+    "DD-MMM-YYYY"
+  );
   const currentDate = moment().format("DD-MMM-YYYY");
   let dueToday = false;
   //change the following once api for resetting daily task is available
@@ -22,7 +26,59 @@ function ErrandItem(dataItem: { dataItem: ErrandItemProps }) {
   }
 
   return (
-    <div
+    <Card
+      className={
+        " w-full h-16 relative " + (dueToday ? "bg-primary" : " bg-background")
+      }
+    >
+      <CardContent className="flex h-full items-center gap-3">
+        <Checkbox
+          id="item"
+          className={
+            "bg-accent " +
+            (dueToday
+              ? "border-primary text-primary-foreground"
+              : "text-foreground")
+          }
+        />
+        <div className="grid leading-none">
+          <label
+            htmlFor="terms1"
+            className={
+              " leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 " +
+              (dueToday ? "text-primary-foreground" : "text-foreground")
+            }
+          >
+            {dataItem.dataItem.title}
+          </label>
+          <p
+            className={
+              "text-xs truncate opacity-70 pr-5 " +
+              (dueToday ? "text-primary-foreground" : "text-foreground")
+            }
+          >
+            {dataItem.dataItem.notes}
+          </p>
+        </div>
+      </CardContent>
+      <CardFooter className="absolute bottom-0 right-2 opacity-50">
+        <span
+          className={
+            "text-xs " +
+            (dueToday ? "text-primary-foreground" : "text-foreground")
+          }
+        >
+          {dataItem.dataItem.due}
+        </span>
+      </CardFooter>
+    </Card>
+  );
+}
+
+export default ErrandCard;
+
+{
+  /*<div
       className={
         "flex items-center w-full h-16 rounded-xl px-3 gap-3 relative " +
         (dueToday
@@ -70,8 +126,5 @@ function ErrandItem(dataItem: { dataItem: ErrandItemProps }) {
           {dataItem.dataItem.due}
         </span>
       </div>
-    </div>
-  );
+    </div>*/
 }
-
-export default ErrandItem;

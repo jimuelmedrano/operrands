@@ -1,3 +1,5 @@
+import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
+
 const BentoMetrics = ({
   todayCount,
   overdueCount,
@@ -10,31 +12,45 @@ const BentoMetrics = ({
   return (
     <div className="flex-col-center gap-2">
       <div className="flex gap-3">
-        <div className="bg-primary dark:bg-primaryDark w-36 h-24 rounded-lg flex flex-col p-3 justify-between">
-          <div className="flex">
-            <span className="text-xs text-inverted">Today's Errands</span>
-          </div>
-          <div className="flex justify-end">
-            <span className="text-4xl text-inverted">{todayCount}</span>
-          </div>
-        </div>
-        <div className="bg-primary dark:bg-primaryDark w-36 h-24 rounded-lg flex flex-col p-3 justify-between">
-          <div className="flex">
-            <span className="text-xs text-inverted">Overdue Errands</span>
-          </div>
-          <div className="flex justify-end">
-            <span className="text-4xl text-inverted">{overdueCount}</span>
-          </div>
-        </div>
+        <Card className="bg-primary w-40 flex flex-col justify-between">
+          <CardHeader>
+            <CardTitle>
+              <span className="text-sm text-primary-foreground">
+                Today's Errands
+              </span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex justify-end">
+            <span className="text-4xl text-primary-foreground">
+              {todayCount}
+            </span>
+          </CardContent>
+        </Card>
+        <Card className="bg-primary w-40 flex flex-col justify-between">
+          <CardHeader>
+            <CardTitle>
+              <span className="text-sm text-primary-foreground">
+                Overdue Errands
+              </span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex justify-end">
+            <span className="text-4xl text-primary-foreground">
+              {overdueCount}
+            </span>
+          </CardContent>
+        </Card>
       </div>
-      <div className="bg-primaryDark dark:bg-primary w-full rounded-lg flex p-3 justify-between">
-        <div className="flex">
-          <span className="text-xs">All Tasks</span>
-        </div>
-        <div className="flex justify-end">
-          <span className="text-3xl">{allCount}</span>
-        </div>
-      </div>
+      <Card className="bg-secondary w-full flex justify-between">
+        <CardHeader>
+          <CardTitle>
+            <span className="text-sm text-secondary-foreground">All Tasks</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="flex justify-end">
+          <span className="text-4xl text-secondary-foreground">{allCount}</span>
+        </CardContent>
+      </Card>
     </div>
   );
 };
