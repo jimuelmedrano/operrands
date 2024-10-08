@@ -21,18 +21,16 @@ const HomePage = () => {
       <div className="flex mb-10">
         <div className="flex flex-col justify-between h-40 basis-full md:basis-1/2">
           <div>
-            <span className="text-2xl">Hello, </span>
-            <span className="text-2xl text-primary dark:text-primaryDark">
-              Jimuel Medrano
-            </span>
+            <span className="text-2xl text-foreground">Hello, </span>
+            <span className="text-2xl text-primary">Jimuel Medrano</span>
             <br />
-            <span className="text-sm">
+            <span className="text-sm text-foreground">
               Level up your day by clearing your errands
             </span>
           </div>
           <div className="flex gap-3">
             <div
-              className="flex relative grow max-w-80
+              className="flex relative grow max-w-96
              items-center"
             >
               <input
@@ -42,16 +40,16 @@ const HomePage = () => {
                 onChange={(e) => {
                   setSearch(e.target.value);
                 }}
-                className="font-koulen text-sm dark:text-white grow px-3 py-2 bg-secondary dark:bg-secondaryDark rounded-lg border-none focus:ring-0"
+                className="font-koulen text-foreground text-sm grow px-3 py-2 bg-accent rounded-lg border-none focus:ring-0"
               />
               <Icon
                 name="Search"
                 size={20}
-                className="absolute right-3 opacity-50"
+                className="absolute text-foreground right-3 opacity-50"
               />
             </div>
-            <button className="flex-center bg-secondary dark:bg-secondaryDark p-2 rounded-lg gap-1">
-              <Icon name="Plus" size={20} />
+            <button className="flex-center bg-accent p-2 rounded-lg gap-1">
+              <Icon name="Plus" size={20} className="text-foreground" />
             </button>
           </div>
         </div>

@@ -64,14 +64,17 @@ function SidebarItem({
     <NavLink to={src}>
       <div
         className={
-          "group p-2 rounded-md" +
+          "group p-2 rounded-md " +
           (active
-            ? " bg-primary dark:bg-primaryDark hover:bg-primary dark:hover:bg-primaryDark"
-            : " hover:bg-secondary dark:hover:bg-secondaryDark") +
-          (profile ? " md:fixed md:bottom-0 md:mb-8" : "")
+            ? "bg-primary hover:bg-primary dark:hover:bg-primaryDark "
+            : "hover:bg-accent ") +
+          (profile ? "md:fixed md:bottom-0 md:mb-8" : "")
         }
       >
-        <Icon name={icon} {...(active ? { inverted: true } : {})} />
+        <Icon
+          name={icon}
+          className={active ? "text-primary-foreground" : "text-foreground"}
+        />
       </div>
     </NavLink>
   );

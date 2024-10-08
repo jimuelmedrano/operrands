@@ -18,7 +18,7 @@ function HomeErrandList(data: { data: ErrandListProps }) {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (
-    <div className="h-fit md:h-full bg-secondary dark:bg-secondaryDark rounded-lg p-4">
+    <div className="h-fit md:h-full bg-accent rounded-lg p-4">
       <div className="flex-between w-full">
         <span>{data.data.categoryTitle}</span>
 
