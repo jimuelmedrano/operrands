@@ -45,7 +45,7 @@ function ErrandCard(dataItem: { dataItem: ErrandItemProps }) {
           <label
             htmlFor="terms1"
             className={
-              " leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 " +
+              "font-ubuntu leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 truncate pr-3 " +
               (dueToday ? "text-primary-foreground" : "text-foreground")
             }
           >
