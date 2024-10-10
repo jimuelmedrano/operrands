@@ -11,16 +11,20 @@ interface ErrandItemProps {
   due: string;
 }
 
-function ErrandCard(dataItem: { dataItem: ErrandItemProps }) {
-  const dueDate = moment(dataItem.dataItem.due, "DD-MMM-YYYY").format(
-    "DD-MMM-YYYY"
-  );
+function ErrandCard({
+  dataItem,
+  className,
+}: {
+  dataItem: ErrandItemProps;
+  className?: string;
+}) {
+  const dueDate = moment(dataItem.due, "DD-MMM-YYYY").format("DD-MMM-YYYY");
   const currentDate = moment().format("DD-MMM-YYYY");
   let dueToday = false;
   //change the following once api for resetting daily task is available
-  if (dataItem.dataItem.repeat === "daily") {
+  if (dataItem.repeat === "daily") {
     dueToday = true;
-    dataItem.dataItem.due = currentDate;
+    dataItem.due = currentDate;
   } else {
     dueToday = dueDate === currentDate ? true : false;
   }
@@ -28,7 +32,10 @@ function ErrandCard(dataItem: { dataItem: ErrandItemProps }) {
   return (
     <Card
       className={
-        " w-full h-16 relative " + (dueToday ? "bg-primary" : " bg-background")
+        "w-full h-16 relative " +
+        (dueToday ? "bg-primary" : " bg-background") +
+        " " +
+        className
       }
     >
       <CardContent className="flex h-full items-center gap-3">
@@ -45,11 +52,11 @@ function ErrandCard(dataItem: { dataItem: ErrandItemProps }) {
           <label
             htmlFor="terms1"
             className={
-              " leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 " +
+              "font-ubuntu leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 truncate pr-3 " +
               (dueToday ? "text-primary-foreground" : "text-foreground")
             }
           >
-            {dataItem.dataItem.title}
+            {dataItem.title}
           </label>
           <p
             className={
@@ -57,7 +64,7 @@ function ErrandCard(dataItem: { dataItem: ErrandItemProps }) {
               (dueToday ? "text-primary-foreground" : "text-foreground")
             }
           >
-            {dataItem.dataItem.notes}
+            {dataItem.notes}
           </p>
         </div>
       </CardContent>
@@ -68,7 +75,7 @@ function ErrandCard(dataItem: { dataItem: ErrandItemProps }) {
             (dueToday ? "text-primary-foreground" : "text-foreground")
           }
         >
-          {dataItem.dataItem.due}
+          {dataItem.due}
         </span>
       </CardFooter>
     </Card>
@@ -76,55 +83,3 @@ function ErrandCard(dataItem: { dataItem: ErrandItemProps }) {
 }
 
 export default ErrandCard;
-
-{
-  /*<div
-      className={
-        "flex items-center w-full h-16 rounded-xl px-3 gap-3 relative " +
-        (dueToday
-          ? "bg-primary dark:bg-primaryDark"
-          : " bg-white dark:bg-secondary")
-      }
-    >
-      <div>
-        <input
-          type="checkbox"
-          className={
-            "bg-secondary dark:bg-secondaryDark w-6 h-6 rounded-md border-none focus:ring-0 focus:ring-offset-0 " +
-            (dueToday ? "text-primary dark:text-primaryDark" : "text-black")
-          }
-        />
-      </div>
-      <div>
-        <div className="-mb-1">
-          <p
-            className={
-              "font-koulen text-sm " +
-              (dueToday ? "text-inverted" : "dark:text-black")
-            }
-          >
-            {dataItem.dataItem.title}
-          </p>
-        </div>
-        <div className="w-48">
-          <p
-            className={
-              "text-xs truncate " +
-              (dueToday ? "text-inverted" : "dark:text-black")
-            }
-          >
-            {dataItem.dataItem.notes}
-          </p>
-        </div>
-      </div>
-      <div className="absolute bottom-0 right-2 opacity-50">
-        <span
-          className={
-            "text-xs " + (dueToday ? "text-inverted" : "dark:text-black")
-          }
-        >
-          {dataItem.dataItem.due}
-        </span>
-      </div>
-    </div>*/
-}

@@ -17,13 +17,13 @@ label {
 p {
   @apply font-ubuntu;
 }
+.color-transition {
+  @apply transition-colors duration-1000;
+}
 
 @layer components {
   .no-transition {
     @apply transition-all duration-0;
-  }
-  .color-transition {
-    @apply transition-colors duration-1000;
   }
 }
 
@@ -140,7 +140,7 @@ p {
 
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 14.9%;
+    --border: 0 0% 17%;
 
     --input: 0 0% 14.9%;
 
