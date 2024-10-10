@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "../components/Icon";
 import BentoMetrics from "../components/home/BentoMetrics";
 import HomeErrandList from "../components/home/HomeErrandList";
@@ -10,16 +10,14 @@ const HomePage = () => {
   const [search, setSearch] = useState("");
 
   const errandsHomeData = getHomeErrands;
-  toast("Note: This website is currently a work in progress.", {
-    position: "top-center",
-    className: "justify-center font-koulen",
-  });
-  // useEffect(() => {
-  //   // This code will run after everytime the provided variable changes
-
-  //   // You can perform other actions here, such as an API call
-  //   // Example: makeApiCall(searchTerm);
-  // }, [search]);
+  useEffect(() => {
+    setTimeout(() => {
+      toast("Note: This website is currently a work in progress.", {
+        position: "top-center",
+        className: "justify-center font-koulen",
+      });
+    }, 100);
+  }, []);
 
   return (
     <div className="mt-20 h-full flex flex-col">
