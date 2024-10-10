@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import AnnouncementBanner from "./components/AnnouncementBanner";
 import TopBar from "./components/TopBar";
 import SideBar from "./components/SideBar";
+import { Toaster } from "./components/ui/sonner";
 
 import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
@@ -11,7 +11,6 @@ import ProfilePage from "./pages/ProfilePage";
 const App = () => {
   return (
     <div className="h-dvh">
-      <AnnouncementBanner />
       <TopBar />
       <div className="flex h-full">
         <SideBar />
@@ -24,6 +23,7 @@ const App = () => {
             <Route path="/categories" element={<CategoriesPage />} />
             <Route path="/profile" element={<ProfilePage />} />
           </Routes>
+          <Toaster />
         </main>
       </div>
     </div>
