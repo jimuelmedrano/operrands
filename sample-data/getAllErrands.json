@@ -3,6 +3,7 @@
     "title": "Take vitamins",
     "notes": "",
     "status": "todo",
+    "category": "daily",
     "repeat": "daily",
     "days": "daily",
     "due": "03-Oct-2024"
@@ -11,6 +12,7 @@
     "title": "Exercise for 30 mins",
     "notes": "",
     "status": "todo",
+    "category": "daily",
     "repeat": "daily",
     "days": "daily",
     "due": "03-Oct-2024"
@@ -19,6 +21,7 @@
     "title": "Clean your desk",
     "notes": "",
     "status": "todo",
+    "category": "daily",
     "repeat": "daily",
     "days": "daily",
     "due": "03-Oct-2024"
@@ -27,6 +30,7 @@
     "title": "Clean room",
     "notes": "Lorem ipsum odor amet, consectetuer",
     "status": "todo",
+    "category": "weekly",
     "repeat": "weekly",
     "days": "sun",
     "due": "29-Sep-2024"
@@ -35,6 +39,7 @@
     "title": "Wash clothes",
     "notes": "Lorem ipsum odor amet, consectetuer",
     "status": "todo",
+    "category": "weekly",
     "repeat": "weekly",
     "days": "sun,sat",
     "due": "28-Sep-2024"
@@ -43,6 +48,7 @@
     "title": "Work updates",
     "notes": "",
     "status": "todo",
+    "category": "weekly",
     "repeat": "weekly",
     "days": "mon,tue,wed,thu,fri",
     "due": "28-Sep-2024"
@@ -51,6 +57,7 @@
     "title": "Check Reports",
     "notes": "",
     "status": "todo",
+    "category": "weekly",
     "repeat": "weekly",
     "days": "mon,wed,fri",
     "due": "28-Sep-2024"
@@ -59,6 +66,7 @@
     "title": "Pay rent",
     "notes": "Lorem ipsum odor amet, consectetuer",
     "status": "todo",
+    "category": "weekly",
     "repeat": "monthly",
     "days": "last",
     "due": "29-Sep-2024"
@@ -67,6 +75,7 @@
     "title": "Pay utility bills",
     "notes": "Lorem ipsum odor amet, consectetuer",
     "status": "todo",
+    "category": "weekly",
     "repeat": "weekly",
     "days": "15",
     "due": "28-Sep-2024"
@@ -75,6 +84,7 @@
     "title": "Fix Operrands UI bug",
     "notes": "Create new branch for this fix",
     "status": "todo",
+    "category": "to do",
     "repeat": "none",
     "days": "none",
     "due": "29-Sep-2024"
@@ -83,6 +93,7 @@
     "title": "Sprint planning",
     "notes": "Discuss about the new features of operrands",
     "status": "todo",
+    "category": "to do",
     "repeat": "none",
     "days": "none",
     "due": "28-Sep-2024"
@@ -91,6 +102,7 @@
     "title": "Add search feature",
     "notes": "Create new branch for this fix",
     "status": "todo",
+    "category": "to do",
     "repeat": "none",
     "days": "none",
     "due": "28-Sep-2024"
@@ -99,6 +111,7 @@
     "title": "Add profile feature",
     "notes": "Create new branch for this fix",
     "status": "todo",
+    "category": "to do",
     "repeat": "none",
     "days": "none",
     "due": "28-Sep-2024"
@@ -107,6 +120,7 @@
     "title": "Take vitamins",
     "notes": "",
     "status": "todo",
+    "category": "daily",
     "repeat": "daily",
     "days": "daily",
     "due": "03-Oct-2024"
@@ -115,6 +129,7 @@
     "title": "Exercise for 30 mins",
     "notes": "",
     "status": "todo",
+    "category": "daily",
     "repeat": "daily",
     "days": "daily",
     "due": "03-Oct-2024"
@@ -123,6 +138,7 @@
     "title": "Clean your desk",
     "notes": "",
     "status": "todo",
+    "category": "daily",
     "repeat": "daily",
     "days": "daily",
     "due": "03-Oct-2024"
@@ -131,6 +147,7 @@
     "title": "Clean room",
     "notes": "Lorem ipsum odor amet, consectetuer",
     "status": "todo",
+    "category": "weekly",
     "repeat": "weekly",
     "days": "sun",
     "due": "29-Sep-2024"
@@ -139,6 +156,7 @@
     "title": "Wash clothes",
     "notes": "Lorem ipsum odor amet, consectetuer",
     "status": "todo",
+    "category": "weekly",
     "repeat": "weekly",
     "days": "sun,sat",
     "due": "28-Sep-2024"
@@ -147,6 +165,7 @@
     "title": "Work updates",
     "notes": "",
     "status": "todo",
+    "category": "weekly",
     "repeat": "weekly",
     "days": "mon,tue,wed,thu,fri",
     "due": "28-Sep-2024"
@@ -155,6 +174,7 @@
     "title": "Check Reports",
     "notes": "",
     "status": "todo",
+    "category": "weekly",
     "repeat": "weekly",
     "days": "mon,wed,fri",
     "due": "28-Sep-2024"
@@ -163,6 +183,7 @@
     "title": "Pay rent",
     "notes": "Lorem ipsum odor amet, consectetuer",
     "status": "todo",
+    "category": "weekly",
     "repeat": "monthly",
     "days": "last",
     "due": "29-Sep-2024"
@@ -171,6 +192,7 @@
     "title": "Pay utility bills",
     "notes": "Lorem ipsum odor amet, consectetuer",
     "status": "todo",
+    "category": "weekly",
     "repeat": "weekly",
     "days": "15",
     "due": "28-Sep-2024"
@@ -179,6 +201,7 @@
     "title": "Fix Operrands UI bug",
     "notes": "Create new branch for this fix",
     "status": "todo",
+    "category": "to do",
     "repeat": "none",
     "days": "none",
     "due": "29-Sep-2024"
@@ -187,6 +210,7 @@
     "title": "Sprint planning",
     "notes": "Discuss about the new features of operrands",
     "status": "todo",
+    "category": "to do",
     "repeat": "none",
     "days": "none",
     "due": "28-Sep-2024"
@@ -195,6 +219,7 @@
     "title": "Add search feature",
     "notes": "Create new branch for this fix",
     "status": "todo",
+    "category": "to do",
     "repeat": "none",
     "days": "none",
     "due": "28-Sep-2024"
@@ -203,6 +228,241 @@
     "title": "Add profile feature",
     "notes": "Create new branch for this fix",
     "status": "todo",
+    "category": "to do",
+    "repeat": "none",
+    "days": "none",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Take vitamins",
+    "notes": "",
+    "status": "todo",
+    "category": "daily",
+    "repeat": "daily",
+    "days": "daily",
+    "due": "03-Oct-2024"
+  },
+  {
+    "title": "Exercise for 30 mins",
+    "notes": "",
+    "status": "todo",
+    "category": "daily",
+    "repeat": "daily",
+    "days": "daily",
+    "due": "03-Oct-2024"
+  },
+  {
+    "title": "Clean your desk",
+    "notes": "",
+    "status": "todo",
+    "category": "daily",
+    "repeat": "daily",
+    "days": "daily",
+    "due": "03-Oct-2024"
+  },
+  {
+    "title": "Clean room",
+    "notes": "Lorem ipsum odor amet, consectetuer",
+    "status": "todo",
+    "category": "weekly",
+    "repeat": "weekly",
+    "days": "sun",
+    "due": "29-Sep-2024"
+  },
+  {
+    "title": "Wash clothes",
+    "notes": "Lorem ipsum odor amet, consectetuer",
+    "status": "todo",
+    "category": "weekly",
+    "repeat": "weekly",
+    "days": "sun,sat",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Work updates",
+    "notes": "",
+    "status": "todo",
+    "category": "weekly",
+    "repeat": "weekly",
+    "days": "mon,tue,wed,thu,fri",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Check Reports",
+    "notes": "",
+    "status": "todo",
+    "category": "weekly",
+    "repeat": "weekly",
+    "days": "mon,wed,fri",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Pay rent",
+    "notes": "Lorem ipsum odor amet, consectetuer",
+    "status": "todo",
+    "category": "weekly",
+    "repeat": "monthly",
+    "days": "last",
+    "due": "29-Sep-2024"
+  },
+  {
+    "title": "Pay utility bills",
+    "notes": "Lorem ipsum odor amet, consectetuer",
+    "status": "todo",
+    "category": "weekly",
+    "repeat": "weekly",
+    "days": "15",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Fix Operrands UI bug",
+    "notes": "Create new branch for this fix",
+    "status": "todo",
+    "category": "to do",
+    "repeat": "none",
+    "days": "none",
+    "due": "29-Sep-2024"
+  },
+  {
+    "title": "Sprint planning",
+    "notes": "Discuss about the new features of operrands",
+    "status": "todo",
+    "category": "to do",
+    "repeat": "none",
+    "days": "none",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Add search feature",
+    "notes": "Create new branch for this fix",
+    "status": "todo",
+    "category": "to do",
+    "repeat": "none",
+    "days": "none",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Add profile feature",
+    "notes": "Create new branch for this fix",
+    "status": "todo",
+    "category": "to do",
+    "repeat": "none",
+    "days": "none",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Take vitamins",
+    "notes": "",
+    "status": "todo",
+    "category": "daily",
+    "repeat": "daily",
+    "days": "daily",
+    "due": "03-Oct-2024"
+  },
+  {
+    "title": "Exercise for 30 mins",
+    "notes": "",
+    "status": "todo",
+    "category": "daily",
+    "repeat": "daily",
+    "days": "daily",
+    "due": "03-Oct-2024"
+  },
+  {
+    "title": "Clean your desk",
+    "notes": "",
+    "status": "todo",
+    "category": "daily",
+    "repeat": "daily",
+    "days": "daily",
+    "due": "03-Oct-2024"
+  },
+  {
+    "title": "Clean room",
+    "notes": "Lorem ipsum odor amet, consectetuer",
+    "status": "todo",
+    "category": "weekly",
+    "repeat": "weekly",
+    "days": "sun",
+    "due": "29-Sep-2024"
+  },
+  {
+    "title": "Wash clothes",
+    "notes": "Lorem ipsum odor amet, consectetuer",
+    "status": "todo",
+    "category": "weekly",
+    "repeat": "weekly",
+    "days": "sun,sat",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Work updates",
+    "notes": "",
+    "status": "todo",
+    "category": "weekly",
+    "repeat": "weekly",
+    "days": "mon,tue,wed,thu,fri",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Check Reports",
+    "notes": "",
+    "status": "todo",
+    "category": "weekly",
+    "repeat": "weekly",
+    "days": "mon,wed,fri",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Pay rent",
+    "notes": "Lorem ipsum odor amet, consectetuer",
+    "status": "todo",
+    "category": "weekly",
+    "repeat": "monthly",
+    "days": "last",
+    "due": "29-Sep-2024"
+  },
+  {
+    "title": "Pay utility bills",
+    "notes": "Lorem ipsum odor amet, consectetuer",
+    "status": "todo",
+    "category": "weekly",
+    "repeat": "weekly",
+    "days": "15",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Fix Operrands UI bug",
+    "notes": "Create new branch for this fix",
+    "status": "todo",
+    "category": "to do",
+    "repeat": "none",
+    "days": "none",
+    "due": "29-Sep-2024"
+  },
+  {
+    "title": "Sprint planning",
+    "notes": "Discuss about the new features of operrands",
+    "status": "todo",
+    "category": "to do",
+    "repeat": "none",
+    "days": "none",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Add search feature",
+    "notes": "Create new branch for this fix",
+    "status": "todo",
+    "category": "to do",
+    "repeat": "none",
+    "days": "none",
+    "due": "28-Sep-2024"
+  },
+  {
+    "title": "Add profile feature",
+    "notes": "Create new branch for this fix",
+    "status": "todo",
+    "category": "to do",
     "repeat": "none",
     "days": "none",
     "due": "28-Sep-2024"

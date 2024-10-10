@@ -13,7 +13,7 @@ const SideBar = () => {
   const profilePath = "/profile";
 
   return (
-    <div className="w-full py-4 md:w-fit md:left-auto md:h-dvh gap-8 fixed bottom-0 md:top-0 flex-center md:flex-col md:no-transition z-10">
+    <div className="w-full bg-background md:bg-transparent py-4 md:w-fit md:left-auto md:h-dvh gap-8 fixed bottom-0 md:top-0 flex-center md:flex-col md:no-transition z-10">
       <div onClick={() => setToggle(homePath)}>
         <SidebarItem
           src={homePath}
