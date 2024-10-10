@@ -17,7 +17,7 @@ const SearchPage = () => {
   const categoryList = getCategoryList;
   return (
     <div>
-      <div className="fixed top-10 left-0 z-10 bg-background py-10 pl-[100px] pr-8 w-full grid grid-cols-1 md:grid-cols-1 lg:grid-flow-col gap-3 justify-between mb-10">
+      <div className="fixed top-10 left-0 z-10 bg-background py-10 pl-5 md:pl-[100px] pr-8 w-full grid grid-cols-1 md:grid-cols-1 lg:grid-flow-col gap-3 justify-between mb-10">
         <div>
           <span className="text-2xl text-foreground">Search </span>
           <span className="text-2xl text-primary">Errands</span>
@@ -66,7 +66,7 @@ const SearchPage = () => {
         </div>
       </div>
 
-      <div className="mt-40 w-full h-96 grid grid-cols-1 md:grid-cols-4 gap-3">
+      <div className="mt-80 lg:mt-40 md:mt-60 w-full h-fit grid grid-cols-1 md:grid-cols-4 gap-y-3 md:gap-y-5 gap-x-3">
         {allErrands.map((errandItem, index) => (
           <ErrandCard key={index} dataItem={errandItem} />
         ))}

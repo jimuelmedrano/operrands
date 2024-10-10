@@ -33,7 +33,7 @@ const SideBar = () => {
       <div onClick={() => setToggle(categoriesPath)}>
         <SidebarItem
           src={categoriesPath}
-          icon="Shapes"
+          icon="LayoutGrid"
           {...(toggle === categoriesPath ? { active: true } : {})}
         />
       </div>

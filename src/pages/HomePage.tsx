@@ -33,7 +33,7 @@ const HomePage = () => {
           </div>
           <div className="flex gap-3">
             <div
-              className="flex relative w-96
+              className="flex relative w-full max-w-96
              items-center"
             >
               <Input

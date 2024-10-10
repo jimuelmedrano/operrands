@@ -5,6 +5,7 @@ import Icon from "../Icon";
 interface ErrandListProps {
   categoryTitle: string;
   errands: {
+    id: number;
     title: string;
     notes: string;
     status: string;
@@ -29,9 +30,9 @@ function HomeErrandList(data: { data: ErrandListProps }) {
           className="md:hidden"
         >
           {accordionOpen ? (
-            <Icon name="ChevronUp" />
+            <Icon name="ChevronUp" className="text-foreground" />
           ) : (
-            <Icon name="ChevronDown" />
+            <Icon name="ChevronDown" className="text-foreground" />
           )}
         </button>
       </div>
