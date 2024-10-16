@@ -10,7 +10,7 @@ import ProfilePage from "./pages/ProfilePage";
 
 const App = () => {
   return (
-    <div className="h-dvh">
+    <div id="appbody" className="h-dvh">
       <TopBar />
       <div className="flex h-full">
         <SideBar />

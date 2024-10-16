@@ -1,5 +1,5 @@
-import { Card, CardContent, CardFooter } from "./ui/card";
-import { Checkbox } from "./ui/checkbox";
+import { Card, CardContent, CardFooter } from "../ui/card";
+import { Checkbox } from "../ui/checkbox";
 import moment from "moment";
 
 interface ErrandItemProps {

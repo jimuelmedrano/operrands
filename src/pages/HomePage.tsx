@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Icon from "../components/Icon";
-import BentoMetrics from "../components/home/BentoMetrics";
-import HomeErrandList from "../components/home/HomeErrandList";
+import BentoMetrics from "../components/operrands-app/BentoMetrics";
+import HomeErrandList from "../components/operrands-app/HomeErrandList";
 import getHomeErrands from "../../sample-data/getHomeErrands.json";
+import AddErrand from "@/components/operrands-app/AddErrand";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 
@@ -63,9 +64,7 @@ const HomePage = () => {
                 />
               </button>
             </div>
-            <button className="flex-center bg-accent p-2 rounded-lg gap-1">
-              <Icon name="Plus" size={20} className="text-foreground" />
-            </button>
+            <AddErrand />
           </div>
         </div>
         <div className="basis-0 md:basis-1/2 hidden md:flex items-center justify-end">

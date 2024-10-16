@@ -3,7 +3,7 @@ import { useState } from "react";
 import { DatePickerWithRange } from "@/components/ui/rangedatepicker";
 import { Input } from "@/components/ui/input";
 import { CategorySearch } from "@/components/ui/categorysearch";
-import ErrandCard from "@/components/ErrandCard";
+import ErrandCard from "@/components/operrands-app/ErrandCard";
 import getCategoryList from "../../sample-data/getCategoryList.json";
 import getAllErrands from "../../sample-data/getAllErrands.json";
 
@@ -13,6 +13,10 @@ const SearchPage = () => {
   const handleSearch = () => {
     //call search API
     setSearch(search);
+  };
+  const handleCategory = (selectedCategory: string) => {
+    //form.setValue("category", selectedCategory);
+    console.log(selectedCategory);
   };
   const categoryList = getCategoryList;
   return (
@@ -62,7 +66,10 @@ const SearchPage = () => {
             </div>
           </div>
           <DatePickerWithRange />
-          <CategorySearch categoryList={categoryList} />
+          <CategorySearch
+            categoryList={categoryList}
+            handleSelect={handleCategory}
+          />
         </div>
       </div>
 
