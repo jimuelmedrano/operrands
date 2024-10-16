@@ -17,12 +17,12 @@ const SearchPage = () => {
   const categoryList = getCategoryList;
   return (
     <div>
-      <div className="fixed top-10 left-0 z-10 bg-background py-10 pl-5 md:pl-[100px] pr-8 w-full grid grid-cols-1 md:grid-cols-1 lg:grid-flow-col gap-3 justify-between mb-10">
+      <div className="fixed top-12 md:top-10 left-0 z-10 bg-background py-10 pl-5 md:pl-[100px] pr-8 w-full grid grid-cols-1 md:grid-cols-1 lg:grid-flow-col gap-3 justify-between mb-10">
         <div>
           <span className="text-2xl text-foreground">Search </span>
           <span className="text-2xl text-primary">Errands</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-flow-col md:auto-cols-min gap-3">
+        <div className="grid grid-cols-1 md:grid-flow-col md:auto-cols-min gap-3 pt-3 md:pt-0">
           <div className="flex gap-3">
             <button className="flex-center bg-accent hover:bg-accent/50 p-2 rounded-lg gap-1">
               <Icon name="Plus" size={20} className="text-foreground" />

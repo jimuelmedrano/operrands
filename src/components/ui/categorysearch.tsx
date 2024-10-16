@@ -35,7 +35,7 @@ export function CategorySearch(categoryList: {
           variant="ghost"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="w-52 justify-between"
         >
           {value ? (
             <span className="font-ubuntu">
@@ -52,7 +52,7 @@ export function CategorySearch(categoryList: {
           />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-52 p-0">
         <Command>
           <CommandInput placeholder="Search category..." />
           <CommandList>
