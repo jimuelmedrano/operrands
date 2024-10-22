@@ -71,7 +71,8 @@ export function CategorySearch({
                   className="font-ubuntu"
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
-                    handleSelect(currentValue);
+                    handleSelect(currentValue === value ? "" : currentValue);
+
                     setOpen(false);
                   }}
                 >

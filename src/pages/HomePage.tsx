@@ -3,7 +3,9 @@ import Icon from "../components/Icon";
 import BentoMetrics from "../components/operrands-app/BentoMetrics";
 import HomeErrandList from "../components/operrands-app/HomeErrandList";
 import getHomeErrands from "../../sample-data/getHomeErrands.json";
-import AddErrand from "@/components/operrands-app/AddErrand";
+
+import AddErrand from "@/components/operrands-app/ErrandItemCrud/AddErrandForm";
+
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 

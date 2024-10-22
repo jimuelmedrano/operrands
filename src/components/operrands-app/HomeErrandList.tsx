@@ -1,4 +1,4 @@
-import ErrandCard from "./ErrandCard";
+import ErrandCard from "./ErrandItemCrud/ErrandCard";
 import { useState } from "react";
 import Icon from "../Icon";
 

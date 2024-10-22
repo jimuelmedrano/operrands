@@ -3,7 +3,9 @@ import { useState } from "react";
 import { DatePickerWithRange } from "@/components/ui/rangedatepicker";
 import { Input } from "@/components/ui/input";
 import { CategorySearch } from "@/components/ui/categorysearch";
-import ErrandCard from "@/components/operrands-app/ErrandCard";
+
+import ErrandCard from "@/components/operrands-app/ErrandItemCrud/ErrandCard";
+
 import getCategoryList from "../../sample-data/getCategoryList.json";
 import getAllErrands from "../../sample-data/getAllErrands.json";
 
