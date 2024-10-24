@@ -159,6 +159,7 @@ export default function AddErrand() {
   };
 
   const selectedDayOfMonth: JSX.Element[] = [];
+  monthDays.sort((a, b) => a - b);
   monthDays.forEach((element) => {
     selectedDayOfMonth.push(
       <div
@@ -390,6 +391,14 @@ export default function AddErrand() {
                           </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-fit">
+                          <div className="mb-3">
+                            <h4 className="font-medium leading-none font-koulen">
+                              Select days
+                            </h4>
+                            <p className="text-sm text-muted-foreground font-ubuntu">
+                              Maximum of 5 repeat days
+                            </p>
+                          </div>
                           <SelectDaysOfMonth
                             handleSelectDaysOfMonth={handleSelectMonthlyDays}
                             selectedDays={monthDays}
