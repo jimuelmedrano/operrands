@@ -3,7 +3,10 @@ import { useState } from "react";
 import { DatePickerWithRange } from "@/components/ui/rangedatepicker";
 import { Input } from "@/components/ui/input";
 import { CategorySearch } from "@/components/ui/categorysearch";
-import ErrandCard from "@/components/ErrandCard";
+
+import ErrandCard from "@/components/operrands-app/ErrandItemCrud/ErrandCard";
+import AddErrand from "@/components/operrands-app/ErrandItemCrud/AddErrandForm";
+
 import getCategoryList from "../../sample-data/getCategoryList.json";
 import getAllErrands from "../../sample-data/getAllErrands.json";
 
@@ -14,19 +17,21 @@ const SearchPage = () => {
     //call search API
     setSearch(search);
   };
+  const handleCategory = (selectedCategory: string) => {
+    //form.setValue("category", selectedCategory);
+    console.log(selectedCategory);
+  };
   const categoryList = getCategoryList;
   return (
     <div>
-      <div className="fixed top-10 left-0 z-10 bg-background py-10 pl-[100px] pr-8 w-full grid grid-cols-1 md:grid-cols-1 lg:grid-flow-col gap-3 justify-between mb-10">
+      <div className="fixed top-12 md:top-10 left-0 z-10 bg-background py-10 pl-5 md:pl-[100px] pr-8 w-full grid grid-cols-1 md:grid-cols-1 lg:grid-flow-col gap-3 justify-between mb-10">
         <div>
           <span className="text-2xl text-foreground">Search </span>
           <span className="text-2xl text-primary">Errands</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-flow-col md:auto-cols-min gap-3">
+        <div className="grid grid-cols-1 md:grid-flow-col md:auto-cols-min gap-3 pt-3 md:pt-0">
           <div className="flex gap-3">
-            <button className="flex-center bg-accent hover:bg-accent/50 p-2 rounded-lg gap-1">
-              <Icon name="Plus" size={20} className="text-foreground" />
-            </button>
+            <AddErrand />
 
             <div
               className="flex relative w-80
@@ -62,11 +67,14 @@ const SearchPage = () => {
             </div>
           </div>
           <DatePickerWithRange />
-          <CategorySearch categoryList={categoryList} />
+          <CategorySearch
+            categoryList={categoryList}
+            handleSelect={handleCategory}
+          />
         </div>
       </div>
 
-      <div className="mt-40 w-full h-96 grid grid-cols-1 md:grid-cols-4 gap-3">
+      <div className="mt-80 lg:mt-40 md:mt-60 w-full h-fit grid grid-cols-1 md:grid-cols-4 gap-y-3 md:gap-y-5 gap-x-3">
         {allErrands.map((errandItem, index) => (
           <ErrandCard key={index} dataItem={errandItem} />
         ))}

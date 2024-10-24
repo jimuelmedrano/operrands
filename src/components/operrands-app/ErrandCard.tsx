@@ -1,8 +1,9 @@
-import { Card, CardContent, CardFooter } from "./ui/card";
-import { Checkbox } from "./ui/checkbox";
+import { Card, CardContent, CardFooter } from "../ui/card";
+import { Checkbox } from "../ui/checkbox";
 import moment from "moment";
 
 interface ErrandItemProps {
+  id: number;
   title: string;
   notes: string;
   status: string;
@@ -40,7 +41,7 @@ function ErrandCard({
     >
       <CardContent className="flex h-full items-center gap-3">
         <Checkbox
-          id="item"
+          id={"task" + dataItem.id}
           className={
             "bg-accent " +
             (dueToday
@@ -50,7 +51,7 @@ function ErrandCard({
         />
         <div className="grid leading-none">
           <label
-            htmlFor="terms1"
+            htmlFor={"task" + dataItem.id}
             className={
               "font-ubuntu leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 truncate pr-3 " +
               (dueToday ? "text-primary-foreground" : "text-foreground")

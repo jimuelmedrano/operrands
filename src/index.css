@@ -136,7 +136,7 @@ p {
 
     --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62.8% 60.6%;
 
     --destructive-foreground: 0 0% 98%;
 
@@ -163,6 +163,9 @@ p {
     @apply border-border color-transition;
   }
   body {
-    @apply px-4 md:px-8 bg-background text-foreground;
+    @apply bg-background text-foreground;
+  }
+  #appbody {
+    @apply px-4 md:px-8;
   }
 }
