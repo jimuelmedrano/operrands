@@ -21,12 +21,18 @@ interface CategoryListProps {
   label: string;
 }
 
-export function CategorySearch(categoryList: {
+export function CategorySearch({
+  categoryList,
+  handleSelect,
+  className,
+}: {
   categoryList: CategoryListProps[];
+  handleSelect: (newType: string) => void;
+  className?: string;
 }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
-  const items = categoryList.categoryList;
+  const items = categoryList;
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -35,7 +41,7 @@ export function CategorySearch(categoryList: {
           variant="ghost"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className={"w-52 justify-between " + className}
         >
           {value ? (
             <span className="font-ubuntu">
@@ -52,7 +58,7 @@ export function CategorySearch(categoryList: {
           />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-52 p-0">
         <Command>
           <CommandInput placeholder="Search category..." />
           <CommandList>
@@ -65,6 +71,8 @@ export function CategorySearch(categoryList: {
                   className="font-ubuntu"
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
+                    handleSelect(currentValue === value ? "" : currentValue);
+
                     setOpen(false);
                   }}
                 >
