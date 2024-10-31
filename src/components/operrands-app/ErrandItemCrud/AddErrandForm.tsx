@@ -64,7 +64,9 @@ const FormSchema = z.object({
   repeatDayOfWeek: z.array(z.string()).nonempty({
     message: "Must select at least 1 day to repeat weekly.",
   }),
-  repeatDayOfMonth: z.array(z.number()),
+  repeatDayOfMonth: z.array(z.number()).nonempty({
+    message: "Must select at least 1 day to repeat monthly.",
+  }),
 });
 
 export default function AddErrand() {
@@ -120,7 +122,11 @@ export default function AddErrand() {
 
   const handleRepeat = (selectedRepeat: string) => {
     if (selectedRepeat !== "weekly") {
-      form.setValue("repeatDayOfWeek", ["Mon"]);
+      form.getValues("repeatDayOfWeek").length === 0 && handleSelectDays("Mon");
+    }
+    if (selectedRepeat !== "monthly") {
+      form.getValues("repeatDayOfMonth").length === 0 &&
+        handleSelectMonthlyDays(1);
     }
     setRepeatItem(selectedRepeat);
     form.setValue("repeat", selectedRepeat);
@@ -148,6 +154,7 @@ export default function AddErrand() {
     });
     if (itemExists) {
       const filteredData = repeatDayNewValue.filter((e) => e !== selectedDay);
+      //@ts-ignore
       setMonthDays(filteredData);
       //@ts-ignore
       form.setValue("repeatDayOfMonth", filteredData);
