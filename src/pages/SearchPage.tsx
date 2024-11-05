@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { CategorySearch } from "@/components/ui/categorysearch";
 
 import ErrandCard from "@/components/operrands-app/ErrandItemCrud/ErrandCard";
-import AddErrand from "@/components/operrands-app/ErrandItemCrud/AddErrandForm";
+import AddErrand from "@/components/operrands-app/ErrandItemCrud/ErrandForm";
 
 import getCategoryList from "../../sample-data/getCategoryList.json";
 import getAllErrands from "../../sample-data/getAllErrands.json";

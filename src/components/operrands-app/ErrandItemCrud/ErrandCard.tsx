@@ -1,6 +1,16 @@
 import { Card, CardContent, CardFooter } from "../../ui/card";
 import { Checkbox } from "../../ui/checkbox";
+import ErrandForm from "./ErrandForm";
 import moment from "moment";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface ErrandItemProps {
   id: number;
@@ -33,7 +43,7 @@ function ErrandCard({
   return (
     <Card
       className={
-        "w-full h-16 relative " +
+        "w-full h-16 relative px-3 py-0 " +
         (dueToday ? "bg-primary" : " bg-background") +
         " " +
         className
@@ -49,25 +59,37 @@ function ErrandCard({
               : "text-foreground")
           }
         />
-        <div className="grid leading-none">
-          <label
-            htmlFor={"task" + dataItem.id}
-            className={
-              "font-ubuntu leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 truncate pr-3 " +
-              (dueToday ? "text-primary-foreground" : "text-foreground")
-            }
-          >
-            {dataItem.title}
-          </label>
-          <p
-            className={
-              "text-xs truncate opacity-70 pr-5 " +
-              (dueToday ? "text-primary-foreground" : "text-foreground")
-            }
-          >
-            {dataItem.notes}
-          </p>
-        </div>
+        <Dialog>
+          <DialogTrigger className="w-full h-full">
+            <div className="leading-none flex flex-col items-start justify-center  ">
+              <span
+                className={
+                  "font-ubuntu leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 truncate pr-3 " +
+                  (dueToday ? "text-primary-foreground" : "text-foreground")
+                }
+              >
+                {dataItem.title}
+              </span>
+              <p
+                className={
+                  "text-xs truncate opacity-70 pr-5 " +
+                  (dueToday ? "text-primary-foreground" : "text-foreground")
+                }
+              >
+                {dataItem.notes}
+              </p>
+            </div>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Edit errand</DialogTitle>
+              <DialogDescription>
+                Modify your errands here and start tracking today.
+              </DialogDescription>
+            </DialogHeader>
+            <ErrandForm variant="edit" />
+          </DialogContent>
+        </Dialog>
       </CardContent>
       <CardFooter className="absolute bottom-0 right-2 opacity-50">
         <span
