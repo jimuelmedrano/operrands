@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { CategorySearch } from "@/components/ui/categorysearch";
 
 import ErrandCard from "@/components/operrands-app/ErrandItemCrud/ErrandCard";
-import AddErrand from "@/components/operrands-app/ErrandItemCrud/ErrandForm";
+import AddErrandButton from "@/components/operrands-app/ErrandItemCrud/AddErrandButton";
 
 import getCategoryList from "../../sample-data/getCategoryList.json";
 import getAllErrands from "../../sample-data/getAllErrands.json";
@@ -31,7 +31,7 @@ const SearchPage = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-flow-col md:auto-cols-min gap-3 pt-3 md:pt-0">
           <div className="flex gap-3">
-            <AddErrand />
+            <AddErrandButton />
 
             <div
               className="flex relative w-80

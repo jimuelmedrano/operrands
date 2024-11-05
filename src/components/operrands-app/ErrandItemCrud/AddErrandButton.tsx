@@ -2,7 +2,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -11,7 +10,7 @@ import {
 import Icon from "@/components/Icon";
 import ErrandForm from "./ErrandForm";
 
-const AddErrand = () => {
+const AddErrandButton = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -32,4 +31,4 @@ const AddErrand = () => {
   );
 };
 
-export default AddErrand;
+export default AddErrandButton;
