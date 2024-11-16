@@ -25,6 +25,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import Icon from "@/components/Icon";
 import { CategorySearch } from "../../ui/categorysearch";
 import { SelectDays, SelectDaysOfMonth } from "./SelectDaysToggle";
 
@@ -36,6 +37,19 @@ import {
 } from "@/components/ui/popover";
 import { CalendarIcon } from "lucide-react";
 import { JSX } from "react/jsx-runtime";
+
+interface ErrandItemProps {
+  id: number;
+  title: string;
+  notes: string;
+  status: string;
+  category: string;
+  startDate: string;
+  repeat: string;
+  repeatDayOfWeek: string[];
+  repeatDayOfMonth: number[];
+  dueDate?: string;
+}
 
 const FormSchema = z.object({
   title: z.string().min(1, {
@@ -61,21 +75,24 @@ const FormSchema = z.object({
   }),
 });
 
-export default function ErrandForm() {
+export default function ErrandEditForm(dataItem: ErrandItemProps) {
   const categoryList = getCategoryList;
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      title: "",
-      notes: "",
-      status: "todo",
-      category: "",
-      dueDate: undefined,
-      startDate: new Date(),
-      repeat: "none",
-      repeatDayOfWeek: ["Mon"],
-      repeatDayOfMonth: [1],
+      title: dataItem.title,
+      notes: dataItem.notes,
+      status: dataItem.status,
+      category: dataItem.category,
+      dueDate:
+        dataItem.dueDate !== undefined
+          ? new Date(Date.parse(dataItem.dueDate))
+          : undefined,
+      startDate: new Date(Date.parse(dataItem.startDate)),
+      repeat: dataItem.repeat,
+      repeatDayOfWeek: dataItem.repeatDayOfWeek,
+      repeatDayOfMonth: dataItem.repeatDayOfMonth,
     },
   });
 
@@ -377,6 +394,14 @@ export default function ErrandForm() {
         )}
 
         <div className="flex justify-end gap-3">
+          <button className="flex-center bg-destructive p-2 rounded-lg gap-1">
+            <Icon
+              name="Trash2"
+              size={20}
+              className="text-destructive-foreground"
+            />
+          </button>
+
           <Button type="submit" className="font-koulen text-primary-foreground">
             Save errand
           </Button>

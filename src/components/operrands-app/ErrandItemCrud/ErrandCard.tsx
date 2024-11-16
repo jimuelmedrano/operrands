@@ -1,6 +1,6 @@
 import { Card, CardContent, CardFooter } from "../../ui/card";
 import { Checkbox } from "../../ui/checkbox";
-import ErrandForm from "./ErrandForm";
+import ErrandEditForm from "./ErrandEditForm";
 import moment from "moment";
 
 import {
@@ -17,9 +17,12 @@ interface ErrandItemProps {
   title: string;
   notes: string;
   status: string;
+  category: string;
+  startDate: string;
   repeat: string;
-  days: string;
-  due: string;
+  repeatDayOfWeek: string[];
+  repeatDayOfMonth: number[];
+  dueDate?: string;
 }
 
 function ErrandCard({
@@ -29,15 +32,35 @@ function ErrandCard({
   dataItem: ErrandItemProps;
   className?: string;
 }) {
-  const dueDate = moment(dataItem.due, "DD-MMM-YYYY").format("DD-MMM-YYYY");
-  const currentDate = moment().format("DD-MMM-YYYY");
   let dueToday = false;
-  //change the following once api for resetting daily task is available
+  let footerText = null;
+  const currentDate = new Date();
+
   if (dataItem.repeat === "daily") {
     dueToday = true;
-    dataItem.due = currentDate;
+    footerText = "Daily";
+  } else if (dataItem.repeat === "weekly") {
+    footerText = dataItem.repeatDayOfWeek.toString();
+    //If today is included in repeat day of week, set due today to true
+    dataItem.repeatDayOfWeek.find((e) => e === moment().format("ddd")) !==
+      undefined && (dueToday = true);
+  } else if (dataItem.repeat === "monthly") {
+    dataItem.repeatDayOfMonth.sort((a, b) => a - b);
+    let monthlyFooter: string[] = [];
+    dataItem.repeatDayOfMonth.forEach((element) => {
+      if (element > 31) {
+        monthlyFooter.push("Last day of the month");
+        getLastDayOfTheMonth() === currentDate.getDate() && (dueToday = true);
+      } else {
+        monthlyFooter.push(getOrdinal(element));
+        dataItem.repeatDayOfMonth.find((e) => e === currentDate.getDate()) !==
+          undefined && (dueToday = true);
+      }
+    });
+    footerText = monthlyFooter.toString();
   } else {
-    dueToday = dueDate === currentDate ? true : false;
+    dataItem.dueDate !== undefined &&
+      (footerText = moment(Date.parse(dataItem.dueDate)).format("DD-MMM-YYYY"));
   }
 
   return (
@@ -87,22 +110,43 @@ function ErrandCard({
                 Modify your errands here and start tracking today.
               </DialogDescription>
             </DialogHeader>
-            <ErrandForm variant="edit" />
+            <ErrandEditForm {...dataItem} />
           </DialogContent>
         </Dialog>
       </CardContent>
       <CardFooter className="absolute bottom-0 right-2 opacity-50">
         <span
           className={
-            "text-xs " +
+            "text-xs font-ubuntu " +
             (dueToday ? "text-primary-foreground" : "text-foreground")
           }
         >
-          {dataItem.due}
+          {footerText}
         </span>
       </CardFooter>
     </Card>
   );
+}
+
+function getOrdinal(n: number) {
+  let ord = "th";
+
+  if (n % 10 == 1 && n % 100 != 11) {
+    ord = "st";
+  } else if (n % 10 == 2 && n % 100 != 12) {
+    ord = "nd";
+  } else if (n % 10 == 3 && n % 100 != 13) {
+    ord = "rd";
+  }
+
+  return n + ord;
+}
+
+function getLastDayOfTheMonth() {
+  // Create a new Date object representing the last day of the specified month
+  // By passing m + 1 as the month parameter and 0 as the day parameter, it represents the last day of the specified month
+  const currDate = new Date();
+  return new Date(currDate.getFullYear(), currDate.getMonth() + 1, 0).getDate();
 }
 
 export default ErrandCard;
