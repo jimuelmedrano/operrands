@@ -8,19 +8,21 @@
         "notes": "",
         "status": "todo",
         "category": "daily",
+        "startDate": "2024-11-07T12:21:01.358Z",
         "repeat": "daily",
-        "days": "daily",
-        "due": "03-Oct-2024"
+        "repeatDayOfWeek": ["Mon"],
+        "repeatDayOfMonth": [1]
       },
       {
         "id": 2,
         "title": "Exercise for 30 mins",
-        "notes": "",
+        "notes": "add jogging or cycling",
         "status": "todo",
         "category": "daily",
+        "startDate": "2024-11-11T16:00:00.000Z",
         "repeat": "daily",
-        "days": "daily",
-        "due": "03-Oct-2024"
+        "repeatDayOfWeek": ["Mon"],
+        "repeatDayOfMonth": [1]
       },
       {
         "id": 3,
@@ -28,9 +30,10 @@
         "notes": "",
         "status": "todo",
         "category": "daily",
+        "startDate": "2024-11-11T16:00:00.000Z",
         "repeat": "daily",
-        "days": "daily",
-        "due": "03-Oct-2024"
+        "repeatDayOfWeek": ["Mon"],
+        "repeatDayOfMonth": [1]
       }
     ]
   },
@@ -43,39 +46,43 @@
         "notes": "Lorem ipsum odor amet, consectetuer",
         "status": "todo",
         "category": "weekly",
+        "startDate": "2024-11-07T16:00:00.000Z",
         "repeat": "weekly",
-        "days": "sun",
-        "due": "29-Sep-2024"
+        "repeatDayOfWeek": ["Sat"],
+        "repeatDayOfMonth": [1]
       },
       {
         "id": 5,
-        "title": "Wash clothes",
+        "title": "Wash and fold clothes",
         "notes": "Lorem ipsum odor amet, consectetuer",
         "status": "todo",
         "category": "weekly",
+        "startDate": "2024-11-07T13:06:50.665Z",
         "repeat": "weekly",
-        "days": "sun,sat",
-        "due": "28-Sep-2024"
+        "repeatDayOfWeek": ["Sun", "Sat"],
+        "repeatDayOfMonth": [1]
       },
       {
         "id": 6,
         "title": "Work updates",
-        "notes": "",
+        "notes": "Lorem ipsum odor amet, consectetuer",
         "status": "todo",
         "category": "weekly",
+        "startDate": "2024-11-07T13:06:50.665Z",
         "repeat": "weekly",
-        "days": "mon,tue,wed,thu,fri",
-        "due": "28-Sep-2024"
+        "repeatDayOfWeek": ["Mon", "Wed", "Fri"],
+        "repeatDayOfMonth": [1]
       },
       {
         "id": 7,
-        "title": "Check Reports",
-        "notes": "",
+        "title": "Check reports",
+        "notes": "Lorem ipsum odor amet, consectetuer",
         "status": "todo",
         "category": "weekly",
+        "startDate": "2024-11-07T13:06:50.665Z",
         "repeat": "weekly",
-        "days": "mon,wed,fri",
-        "due": "28-Sep-2024"
+        "repeatDayOfWeek": ["Tue", "Thu"],
+        "repeatDayOfMonth": [1]
       }
     ]
   },
@@ -85,22 +92,24 @@
       {
         "id": 8,
         "title": "Pay rent",
-        "notes": "Lorem ipsum odor amet, consectetuer",
+        "notes": "bank transfer to landlord",
         "status": "todo",
         "category": "monthly",
+        "startDate": "2024-11-07T13:47:31.079Z",
         "repeat": "monthly",
-        "days": "last",
-        "due": "29-Sep-2024"
+        "repeatDayOfWeek": ["Mon"],
+        "repeatDayOfMonth": [32]
       },
       {
         "id": 9,
         "title": "Pay utility bills",
-        "notes": "Lorem ipsum odor amet, consectetuer",
+        "notes": "water, electricity, internet",
         "status": "todo",
         "category": "monthly",
-        "repeat": "weekly",
-        "days": "15",
-        "due": "28-Sep-2024"
+        "startDate": "2024-11-07T13:47:31.079Z",
+        "repeat": "monthly",
+        "repeatDayOfWeek": ["Mon"],
+        "repeatDayOfMonth": [1, 15]
       }
     ]
   },
@@ -109,43 +118,48 @@
     "errands": [
       {
         "id": 10,
-        "title": "Fix Operrands UI bug",
-        "notes": "Create new branch for this fix",
+        "title": "Add search feature",
+        "notes": "check documentation for requirements",
         "status": "todo",
         "category": "todo",
+        "startDate": "2024-11-07T13:47:31.079Z",
         "repeat": "none",
-        "days": "none",
-        "due": "29-Sep-2024"
+        "repeatDayOfWeek": ["Mon"],
+        "repeatDayOfMonth": [32]
       },
       {
         "id": 11,
-        "title": "Sprint planning",
-        "notes": "Discuss about the new features of operrands",
+        "title": "Check operrands analytics",
+        "notes": "check documentation for requirements",
         "status": "todo",
         "category": "todo",
-        "repeat": "none",
-        "days": "none",
-        "due": "28-Sep-2024"
+        "startDate": "2024-11-07T13:47:31.079Z",
+        "repeat": "monthly",
+        "repeatDayOfWeek": ["Mon"],
+        "repeatDayOfMonth": [1, 15]
       },
       {
         "id": 12,
         "title": "Add search feature",
-        "notes": "Create new branch for this fix",
+        "notes": "check documentation for requirements",
         "status": "todo",
         "category": "todo",
+        "startDate": "2024-11-07T13:47:31.079Z",
         "repeat": "none",
-        "days": "none",
-        "due": "28-Sep-2024"
+        "repeatDayOfWeek": ["Mon"],
+        "repeatDayOfMonth": [32]
       },
       {
-        "id": 13,
-        "title": "Add profile feature",
-        "notes": "Create new branch for this fix",
+        "id": 12,
+        "title": "Add search feature",
+        "notes": "check documentation for requirements",
         "status": "todo",
         "category": "todo",
+        "dueDate": "2024-11-16T16:00:00.000Z",
+        "startDate": "2024-11-07T13:47:31.079Z",
         "repeat": "none",
-        "days": "none",
-        "due": "28-Sep-2024"
+        "repeatDayOfWeek": ["Mon"],
+        "repeatDayOfMonth": [32]
       }
     ]
   }
