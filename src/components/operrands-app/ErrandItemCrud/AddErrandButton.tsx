@@ -25,7 +25,7 @@ const AddErrandButton = () => {
             Create your errands here and start tracking today.
           </DialogDescription>
         </DialogHeader>
-        <ErrandForm variant="add" />
+        <ErrandForm />
       </DialogContent>
     </Dialog>
   );
