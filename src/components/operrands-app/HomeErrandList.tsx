@@ -9,9 +9,12 @@ interface ErrandListProps {
     title: string;
     notes: string;
     status: string;
+    category: string;
+    startDate: string;
     repeat: string;
-    days: string;
-    due: string;
+    repeatDayOfWeek: string[];
+    repeatDayOfMonth: number[];
+    dueDate?: string;
   }[];
 }
 
