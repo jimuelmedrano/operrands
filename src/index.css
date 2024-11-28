@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Koulen&family=Ubuntu+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Koulen&family=Jockey+One&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -15,7 +15,7 @@ label {
 }
 
 p {
-  @apply font-ubuntu;
+  @apply font-jockey;
 }
 .color-transition {
   @apply transition-colors duration-1000;
