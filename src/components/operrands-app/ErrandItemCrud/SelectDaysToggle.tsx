@@ -10,15 +10,13 @@ function SelectDays({
   value: string;
   selected?: boolean;
 }) {
-  const [variantState, setVariantState] = useState(
-    selected === undefined ? false : true
-  );
+  const [variantState, setVariantState] = useState(selected);
   function handleVariantState() {
     setVariantState(!variantState);
   }
   return (
     <Button
-      className="w-11"
+      className="w-11 font-jockey"
       type="button"
       variant={variantState ? "default" : "outline"}
       onClick={() => {
@@ -46,9 +44,7 @@ function SelectDaysNumber({
   className?: string;
   isDisabled?: boolean;
 }) {
-  const [variantState, setVariantState] = useState(
-    selected === undefined ? false : true
-  );
+  const [variantState, setVariantState] = useState(selected);
   function handleVariantState() {
     setVariantState(!variantState);
   }

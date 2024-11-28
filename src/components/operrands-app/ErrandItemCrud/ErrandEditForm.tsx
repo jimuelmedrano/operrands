@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -189,6 +189,10 @@ export default function ErrandEditForm(dataItem: ErrandItemProps) {
     );
   });
 
+  useEffect(() => {
+    handleCategory(dataItem.category);
+  }, []);
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-5">
@@ -200,7 +204,7 @@ export default function ErrandEditForm(dataItem: ErrandItemProps) {
               <FormLabel>Errand Title</FormLabel>
               <FormControl className="border-transparent">
                 <Input
-                  className="font-ubuntu"
+                  className="font-jockey"
                   placeholder="Input title..."
                   {...field}
                 />
@@ -237,6 +241,7 @@ export default function ErrandEditForm(dataItem: ErrandItemProps) {
               <FormControl className="border-transparent">
                 <CategorySearch
                   categoryList={categoryList}
+                  selectedValue={dataItem.category}
                   handleSelect={handleCategory}
                   className="w-full"
                 />
@@ -292,7 +297,11 @@ export default function ErrandEditForm(dataItem: ErrandItemProps) {
               <FormItem className="flex flex-col">
                 <FormLabel>Due Date</FormLabel>
                 <FormControl>
-                  <DatePicker className="w-full" handleSelect={handleDueDate} />
+                  <DatePicker
+                    className="w-full"
+                    handleSelect={handleDueDate}
+                    defaultDate={form.getValues("dueDate")}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -311,7 +320,7 @@ export default function ErrandEditForm(dataItem: ErrandItemProps) {
                   <DatePicker
                     className="w-full"
                     handleSelect={handleStartDate}
-                    defaultDate={new Date()}
+                    defaultDate={form.getValues("startDate")}
                   />
                 </FormControl>
                 <FormMessage />
@@ -329,17 +338,55 @@ export default function ErrandEditForm(dataItem: ErrandItemProps) {
                 <FormLabel>Repeat every</FormLabel>
                 <FormControl className="border-transparent">
                   <div className="flex-center gap-2">
-                    <SelectDays value="Sun" handleSelect={handleSelectDays} />
+                    <SelectDays
+                      value="Sun"
+                      handleSelect={handleSelectDays}
+                      selected={form
+                        .getValues("repeatDayOfWeek")
+                        .includes("Sun")}
+                    />
                     <SelectDays
                       value="Mon"
                       handleSelect={handleSelectDays}
-                      selected
+                      selected={form
+                        .getValues("repeatDayOfWeek")
+                        .includes("Mon")}
                     />
-                    <SelectDays value="Tue" handleSelect={handleSelectDays} />
-                    <SelectDays value="Wed" handleSelect={handleSelectDays} />
-                    <SelectDays value="Thu" handleSelect={handleSelectDays} />
-                    <SelectDays value="Fri" handleSelect={handleSelectDays} />
-                    <SelectDays value="Sat" handleSelect={handleSelectDays} />
+                    <SelectDays
+                      value="Tue"
+                      handleSelect={handleSelectDays}
+                      selected={form
+                        .getValues("repeatDayOfWeek")
+                        .includes("Tue")}
+                    />
+                    <SelectDays
+                      value="Wed"
+                      handleSelect={handleSelectDays}
+                      selected={form
+                        .getValues("repeatDayOfWeek")
+                        .includes("Wed")}
+                    />
+                    <SelectDays
+                      value="Thu"
+                      handleSelect={handleSelectDays}
+                      selected={form
+                        .getValues("repeatDayOfWeek")
+                        .includes("Thu")}
+                    />
+                    <SelectDays
+                      value="Fri"
+                      handleSelect={handleSelectDays}
+                      selected={form
+                        .getValues("repeatDayOfWeek")
+                        .includes("Fri")}
+                    />
+                    <SelectDays
+                      value="Sat"
+                      handleSelect={handleSelectDays}
+                      selected={form
+                        .getValues("repeatDayOfWeek")
+                        .includes("Sat")}
+                    />
                   </div>
                 </FormControl>
                 <FormMessage />
@@ -360,7 +407,7 @@ export default function ErrandEditForm(dataItem: ErrandItemProps) {
                     <PopoverTrigger asChild>
                       <Button
                         variant="ghost"
-                        className="w-full font-ubuntu justify-between"
+                        className="w-full font-jockey justify-between"
                       >
                         <div className="flex gap-1">
                           {selectedDayOfMonth.length === 0
@@ -376,7 +423,7 @@ export default function ErrandEditForm(dataItem: ErrandItemProps) {
                         <h4 className="font-medium leading-none font-koulen">
                           Select days
                         </h4>
-                        <p className="text-sm text-muted-foreground font-ubuntu">
+                        <p className="text-sm text-muted-foreground font-jockey">
                           Maximum of 5 repeat days
                         </p>
                       </div>

@@ -23,10 +23,12 @@ interface CategoryListProps {
 
 export function CategorySearch({
   categoryList,
+  selectedValue,
   handleSelect,
   className,
 }: {
   categoryList: CategoryListProps[];
+  selectedValue?: string;
   handleSelect: (newType: string) => void;
   className?: string;
 }) {
@@ -44,13 +46,15 @@ export function CategorySearch({
           className={"w-52 justify-between " + className}
         >
           {value ? (
-            <span className="font-ubuntu">
+            <span className="font-jockey">
               {items.find((item) => item.value === value)?.label}
             </span>
-          ) : (
-            <span className="opacity-50 text-foreground">
-              {"Select category"}
+          ) : selectedValue ? (
+            <span className="font-jockey">
+              {items.find((item) => item.value === selectedValue)?.label}
             </span>
+          ) : (
+            <span className="opacity-50 text-foreground">Select category</span>
           )}
           <Icon
             name="ChevronsUpDown"
@@ -68,7 +72,7 @@ export function CategorySearch({
                 <CommandItem
                   key={item.value}
                   value={item.value}
-                  className="font-ubuntu"
+                  className="font-jockey"
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     handleSelect(currentValue === value ? "" : currentValue);

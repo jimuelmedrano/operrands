@@ -34,7 +34,7 @@ export function DatePicker({
           )}
         >
           {date ? (
-            <span className="font-ubuntu">{format(date, "PPP")}</span>
+            <span className="font-jockey">{format(date, "PPP")}</span>
           ) : (
             <span className="text-foreground opacity-50">Select Date</span>
           )}

@@ -20,7 +20,7 @@ const AddErrandButton = () => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add new errand</DialogTitle>
+          <DialogTitle>ADD NEW ERRAND</DialogTitle>
           <DialogDescription>
             Create your errands here and start tracking today.
           </DialogDescription>

@@ -2,6 +2,7 @@ import { Card, CardContent, CardFooter } from "../../ui/card";
 import { Checkbox } from "../../ui/checkbox";
 import ErrandEditForm from "./ErrandEditForm";
 import moment from "moment";
+import { getOrdinal, getLastDayOfTheMonth } from "@/lib/utils";
 
 import {
   Dialog,
@@ -87,7 +88,7 @@ function ErrandCard({
             <div className="leading-none flex flex-col items-start justify-center  ">
               <span
                 className={
-                  "font-ubuntu leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 truncate pr-3 " +
+                  "font-jockey leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 truncate pr-3 " +
                   (dueToday ? "text-primary-foreground" : "text-foreground")
                 }
               >
@@ -105,7 +106,7 @@ function ErrandCard({
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
-              <DialogTitle>Edit errand</DialogTitle>
+              <DialogTitle>EDIT ERRAND</DialogTitle>
               <DialogDescription>
                 Modify your errands here and start tracking today.
               </DialogDescription>
@@ -117,7 +118,7 @@ function ErrandCard({
       <CardFooter className="absolute bottom-0 right-2 opacity-50">
         <span
           className={
-            "text-xs font-ubuntu " +
+            "text-xs font-jockey " +
             (dueToday ? "text-primary-foreground" : "text-foreground")
           }
         >
@@ -126,27 +127,6 @@ function ErrandCard({
       </CardFooter>
     </Card>
   );
-}
-
-function getOrdinal(n: number) {
-  let ord = "th";
-
-  if (n % 10 == 1 && n % 100 != 11) {
-    ord = "st";
-  } else if (n % 10 == 2 && n % 100 != 12) {
-    ord = "nd";
-  } else if (n % 10 == 3 && n % 100 != 13) {
-    ord = "rd";
-  }
-
-  return n + ord;
-}
-
-function getLastDayOfTheMonth() {
-  // Create a new Date object representing the last day of the specified month
-  // By passing m + 1 as the month parameter and 0 as the day parameter, it represents the last day of the specified month
-  const currDate = new Date();
-  return new Date(currDate.getFullYear(), currDate.getMonth() + 1, 0).getDate();
 }
 
 export default ErrandCard;
