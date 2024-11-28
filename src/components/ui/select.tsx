@@ -132,7 +132,7 @@ const SelectItem = React.forwardRef<
       </SelectPrimitive.ItemIndicator>
     </span>
     <SelectPrimitive.ItemText>
-      {<span className="font-ubuntu">{children}</span>}
+      {<span className="font-jockey">{children}</span>}
     </SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
 ));

@@ -5,7 +5,7 @@ export default {
   theme: {
     fontFamily: {
       koulen: ["Koulen", "sans-serif"],
-      ubuntu: ["Ubuntu Condensed", "sans-serif"],
+      jockey: ["Jockey One", "sans-serif"],
     },
     // colors: {
     //   primary: "#4C7766",

@@ -183,7 +183,7 @@ export default function ErrandForm() {
               <FormLabel>Errand Title</FormLabel>
               <FormControl className="border-transparent">
                 <Input
-                  className="font-ubuntu"
+                  className="font-jockey"
                   placeholder="Input title..."
                   {...field}
                 />
@@ -343,7 +343,7 @@ export default function ErrandForm() {
                     <PopoverTrigger asChild>
                       <Button
                         variant="ghost"
-                        className="w-full font-ubuntu justify-between"
+                        className="w-full font-jockey justify-between"
                       >
                         <div className="flex gap-1">
                           {selectedDayOfMonth.length === 0
@@ -359,7 +359,7 @@ export default function ErrandForm() {
                         <h4 className="font-medium leading-none font-koulen">
                           Select days
                         </h4>
-                        <p className="text-sm text-muted-foreground font-ubuntu">
+                        <p className="text-sm text-muted-foreground font-jockey">
                           Maximum of 5 repeat days
                         </p>
                       </div>
