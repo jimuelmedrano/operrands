@@ -88,7 +88,7 @@ function ErrandCard({
             <div className="leading-none flex flex-col items-start justify-center  ">
               <span
                 className={
-                  "font-jockey leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 truncate pr-3 " +
+                  " leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 truncate pr-3 " +
                   (dueToday ? "text-primary-foreground" : "text-foreground")
                 }
               >
@@ -118,7 +118,7 @@ function ErrandCard({
       <CardFooter className="absolute bottom-0 right-2 opacity-50">
         <span
           className={
-            "text-xs font-jockey " +
+            "text-xs  " +
             (dueToday ? "text-primary-foreground" : "text-foreground")
           }
         >

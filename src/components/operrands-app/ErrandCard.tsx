@@ -53,7 +53,7 @@ function ErrandCard({
           <label
             htmlFor={"task" + dataItem.id}
             className={
-              "font-jockey leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 truncate pr-3 " +
+              " leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 truncate pr-3 " +
               (dueToday ? "text-primary-foreground" : "text-foreground")
             }
           >

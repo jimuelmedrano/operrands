@@ -46,11 +46,9 @@ export function CategorySearch({
           className={"w-52 justify-between " + className}
         >
           {value ? (
-            <span className="font-jockey">
-              {items.find((item) => item.value === value)?.label}
-            </span>
+            <span>{items.find((item) => item.value === value)?.label}</span>
           ) : selectedValue ? (
-            <span className="font-jockey">
+            <span>
               {items.find((item) => item.value === selectedValue)?.label}
             </span>
           ) : (
@@ -72,7 +70,6 @@ export function CategorySearch({
                 <CommandItem
                   key={item.value}
                   value={item.value}
-                  className="font-jockey"
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     handleSelect(currentValue === value ? "" : currentValue);
