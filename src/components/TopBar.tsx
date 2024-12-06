@@ -1,11 +1,13 @@
 import Icon from "./Icon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/firebase/config";
 
 const TopBar = () => {
   const navigate = useNavigate();
-  const isLoggedIn = false;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const currentTheme = localStorage.getItem("theme") === "dark";
   const [darkMode, setDarkMode] = useState(currentTheme);
   const toggleDarkMode = () => {
@@ -18,6 +20,17 @@ const TopBar = () => {
     }
     setDarkMode(!darkMode);
   };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+    return () => unsubscribe();
+  }, [auth]);
 
   return (
     <div className="fixed top-0 left-0 z-50 bg-background flex-between w-full px-4 md:px-8 py-5 mb-5">
@@ -42,7 +55,7 @@ const TopBar = () => {
         </button>
 
         {!isLoggedIn && (
-          <Button variant={"default"} onClick={() => navigate("/login")}>
+          <Button variant={"default"} onClick={() => navigate("/signin")}>
             Sign in
           </Button>
         )}
