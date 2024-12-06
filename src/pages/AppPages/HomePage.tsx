@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Icon from "../components/Icon";
-import BentoMetrics from "../components/operrands-app/BentoMetrics";
-import HomeErrandList from "../components/operrands-app/HomeErrandList";
-import getHomeErrands from "../../sample-data/getHomeErrands.json";
+import Icon from "../../components/Icon";
+import BentoMetrics from "../../components/operrands-app/BentoMetrics";
+import HomeErrandList from "../../components/operrands-app/HomeErrandList";
+import getHomeErrands from "../../../sample-data/getHomeErrands.json";
 
 import AddErrandButton from "@/components/operrands-app/ErrandItemCrud/AddErrandButton";
 
@@ -17,7 +17,7 @@ const HomePage = () => {
     setTimeout(() => {
       toast("Note: This website is currently a work in progress.", {
         position: "top-center",
-        className: "justify-center font-koulen",
+        className: "justify-center",
       });
     }, 100);
   }, []);
@@ -42,7 +42,6 @@ const HomePage = () => {
               <Input
                 type="text"
                 placeholder="Search"
-                className="font-koulen"
                 value={search}
                 onChange={(e) => {
                   setSearch(e.target.value);

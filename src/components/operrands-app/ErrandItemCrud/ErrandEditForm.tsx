@@ -203,11 +203,7 @@ export default function ErrandEditForm(dataItem: ErrandItemProps) {
             <FormItem>
               <FormLabel>Errand Title</FormLabel>
               <FormControl className="border-transparent">
-                <Input
-                  className="font-jockey"
-                  placeholder="Input title..."
-                  {...field}
-                />
+                <Input placeholder="Input title..." {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -407,7 +403,7 @@ export default function ErrandEditForm(dataItem: ErrandItemProps) {
                     <PopoverTrigger asChild>
                       <Button
                         variant="ghost"
-                        className="w-full font-jockey justify-between"
+                        className="w-full  justify-between"
                       >
                         <div className="flex gap-1">
                           {selectedDayOfMonth.length === 0
@@ -420,10 +416,10 @@ export default function ErrandEditForm(dataItem: ErrandItemProps) {
                     </PopoverTrigger>
                     <PopoverContent className="w-fit">
                       <div className="mb-3">
-                        <h4 className="font-medium leading-none font-koulen">
+                        <h4 className="font-medium leading-none">
                           Select days
                         </h4>
-                        <p className="text-sm text-muted-foreground font-jockey">
+                        <p className="text-sm text-muted-foreground ">
                           Maximum of 5 repeat days
                         </p>
                       </div>
@@ -449,7 +445,7 @@ export default function ErrandEditForm(dataItem: ErrandItemProps) {
             />
           </button>
 
-          <Button type="submit" className="font-koulen text-primary-foreground">
+          <Button type="submit" className="text-primary-foreground">
             Save errand
           </Button>
         </div>

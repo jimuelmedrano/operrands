@@ -7,10 +7,10 @@ const SideBar = () => {
   const currentRoute = useLocation();
   const [toggle, setToggle] = useState(currentRoute.pathname);
 
-  const homePath = "/";
-  const searchPath = "/search";
-  const categoriesPath = "/categories";
-  const profilePath = "/profile";
+  const homePath = "/app";
+  const searchPath = "/app/search";
+  const categoriesPath = "/app/categories";
+  const profilePath = "/app/profile";
 
   return (
     <div className="w-full bg-background md:bg-transparent py-4 md:w-fit md:left-auto md:h-dvh gap-8 fixed bottom-0 md:top-0 flex-center md:flex-col md:no-transition z-10">
