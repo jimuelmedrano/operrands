@@ -16,7 +16,7 @@ function SelectDays({
   }
   return (
     <Button
-      className="w-11 font-jockey"
+      className="w-11 "
       type="button"
       variant={variantState ? "default" : "outline"}
       onClick={() => {

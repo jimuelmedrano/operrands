@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Koulen&family=Jockey+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jockey+One&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,17 +6,6 @@
 
 /* Theme */
 
-h1,
-h2,
-h3,
-span,
-label {
-  @apply font-koulen;
-}
-
-p {
-  @apply font-jockey;
-}
 .color-transition {
   @apply transition-colors duration-1000;
 }
@@ -163,7 +152,7 @@ p {
     @apply border-border color-transition;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-jockey;
   }
   #appbody {
     @apply px-4 md:px-8;

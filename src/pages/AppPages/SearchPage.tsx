@@ -7,8 +7,8 @@ import { CategorySearch } from "@/components/ui/categorysearch";
 import ErrandCard from "@/components/operrands-app/ErrandItemCrud/ErrandCard";
 import AddErrandButton from "@/components/operrands-app/ErrandItemCrud/AddErrandButton";
 
-import getCategoryList from "../../sample-data/getCategoryList.json";
-import getAllErrands from "../../sample-data/getAllErrands.json";
+import getCategoryList from "../../../sample-data/getCategoryList.json";
+import getAllErrands from "../../../sample-data/getAllErrands.json";
 
 const SearchPage = () => {
   const [search, setSearch] = useState("");
@@ -26,8 +26,8 @@ const SearchPage = () => {
     <div>
       <div className="fixed top-12 md:top-10 left-0 z-10 bg-background py-10 pl-5 md:pl-[100px] pr-8 w-full grid grid-cols-1 md:grid-cols-1 lg:grid-flow-col gap-3 justify-between mb-10">
         <div>
-          <span className="text-2xl text-foreground">Search </span>
-          <span className="text-2xl text-primary">Errands</span>
+          <span className="text-2xl text-foreground">SEARCH </span>
+          <span className="text-2xl text-primary">ERRANDS</span>
         </div>
         <div className="grid grid-cols-1 md:grid-flow-col md:auto-cols-min gap-3 pt-3 md:pt-0">
           <div className="flex gap-3">
@@ -40,7 +40,6 @@ const SearchPage = () => {
               <Input
                 type="text"
                 placeholder="Search"
-                className="font-koulen "
                 value={search}
                 onChange={(e) => {
                   setSearch(e.target.value);

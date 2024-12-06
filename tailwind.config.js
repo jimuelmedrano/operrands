@@ -4,7 +4,6 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      koulen: ["Koulen", "sans-serif"],
       jockey: ["Jockey One", "sans-serif"],
     },
     // colors: {

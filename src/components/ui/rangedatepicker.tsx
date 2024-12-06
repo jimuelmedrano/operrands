@@ -27,7 +27,7 @@ export function DatePickerWithRange({
             id="date"
             variant={"ghost"}
             className={cn(
-              "w-52 justify-between text-left font-jockey",
+              "w-52 justify-between text-left ",
               !date && "text-muted-foreground"
             )}
           >
