@@ -2,15 +2,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
+  doSignInWithGoogle,
+  doCreateUserWithEmailAndPassword,
+} from "@/firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
-  const auth = getAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -19,35 +16,22 @@ const SignUpPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const signInWithGoogle = async () => {
-    setIsSigningIn(true);
-
     // Use Firebase to sign in with Google
-    await signInWithPopup(auth, new GoogleAuthProvider())
+    await doSignInWithGoogle()
       .then(() => {
-        //console.log(response.user.uid);
         navigate("/app");
       })
       .catch((error) => {
         console.log(error);
-        setIsSigningIn(false);
       });
   };
 
   // Use Firebase to sign in with email and password
   const createUser = async () => {
     setIsSigningIn(true);
-    setErrorMessage("");
-
-    await createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        //console.log(response.user.uid);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-        setErrorMessage(error.message);
-        setIsSigningIn(false);
-      });
+    const resp = await doCreateUserWithEmailAndPassword(email, password);
+    setIsSigningIn(false);
+    resp === "SUCCESS" ? navigate("/app") : setErrorMessage(resp);
   };
 
   return (
