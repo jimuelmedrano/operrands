@@ -9,10 +9,18 @@ import {
 
 import Icon from "@/components/Icon";
 import ErrandForm from "./ErrandForm";
+import { useState } from "react";
 
-const AddErrandButton = () => {
+const AddErrandButton = ({
+  setNotification,
+  categoryList,
+}: {
+  setNotification: (notifText: string, isSuccess?: boolean) => void;
+  categoryList?: string[];
+}) => {
+  const [isDialogOpen, setDialogOpen] = useState(false);
   return (
-    <Dialog>
+    <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
       <DialogTrigger asChild>
         <button className="flex-center bg-accent p-2 rounded-lg gap-1">
           <Icon name="Plus" size={20} className="text-foreground" />
@@ -25,7 +33,11 @@ const AddErrandButton = () => {
             Create your errands here and start tracking today.
           </DialogDescription>
         </DialogHeader>
-        <ErrandForm />
+        <ErrandForm
+          setDialogOpen={setDialogOpen}
+          setNotification={setNotification}
+          categoryList={categoryList}
+        />
       </DialogContent>
     </Dialog>
   );

@@ -1,8 +1,8 @@
 import { Card, CardContent, CardFooter } from "../../ui/card";
 import { Checkbox } from "../../ui/checkbox";
-import ErrandEditForm from "./ErrandEditForm";
 import moment from "moment";
 import { getOrdinal, getLastDayOfTheMonth } from "@/lib/utils";
+import { ErrandItemProps } from "@/lib/interface";
 
 import {
   Dialog,
@@ -12,57 +12,56 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
-interface ErrandItemProps {
-  id: number;
-  title: string;
-  notes: string;
-  status: string;
-  category: string;
-  startDate: string;
-  repeat: string;
-  repeatDayOfWeek: string[];
-  repeatDayOfMonth: number[];
-  dueDate?: string;
-}
-
+import ErrandForm from "./ErrandForm";
+import { useState } from "react";
 function ErrandCard({
   dataItem,
   className,
+  categoryList,
+  setNotification,
 }: {
   dataItem: ErrandItemProps;
   className?: string;
+  categoryList?: string[];
+  setNotification: (notifText: string, isSuccess?: boolean) => void;
 }) {
   let dueToday = false;
   let footerText = null;
   const currentDate = new Date();
 
-  if (dataItem.repeat === "daily") {
+  if (dataItem.repeat === "Daily") {
     dueToday = true;
     footerText = "Daily";
-  } else if (dataItem.repeat === "weekly") {
+  } else if (dataItem.repeat === "Weekly") {
     footerText = dataItem.repeatDayOfWeek.toString();
     //If today is included in repeat day of week, set due today to true
     dataItem.repeatDayOfWeek.find((e) => e === moment().format("ddd")) !==
       undefined && (dueToday = true);
-  } else if (dataItem.repeat === "monthly") {
+  } else if (dataItem.repeat === "Monthly") {
     dataItem.repeatDayOfMonth.sort((a, b) => a - b);
-    let monthlyFooter: string[] = [];
+    let MonthlyFooter: string[] = [];
     dataItem.repeatDayOfMonth.forEach((element) => {
       if (element > 31) {
-        monthlyFooter.push("Last day of the month");
+        MonthlyFooter.push("Last day of the month");
         getLastDayOfTheMonth() === currentDate.getDate() && (dueToday = true);
       } else {
-        monthlyFooter.push(getOrdinal(element));
+        MonthlyFooter.push(getOrdinal(element));
         dataItem.repeatDayOfMonth.find((e) => e === currentDate.getDate()) !==
           undefined && (dueToday = true);
       }
     });
-    footerText = monthlyFooter.toString();
+    footerText = MonthlyFooter.toString();
   } else {
+    const dueDate = moment(dataItem.dueDate + "T" + dataItem.time).toDate();
     dataItem.dueDate !== undefined &&
-      (footerText = moment(Date.parse(dataItem.dueDate)).format("DD-MMM-YYYY"));
+      (footerText = "Due: " + moment(dueDate).format("MMM Do YYYY")); //"MMM Do YYYY, h:mm a"
+
+    dueToday =
+      moment(dueDate).format("DD-MM-YYYY") ===
+      moment(currentDate).format("DD-MM-YYYY");
   }
+
+  const [isDialogOpen, setDialogOpen] = useState(false);
 
   return (
     <Card
@@ -83,7 +82,7 @@ function ErrandCard({
               : "text-foreground")
           }
         />
-        <Dialog>
+        <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger className="w-full h-full">
             <div className="leading-none flex flex-col items-start justify-center  ">
               <span
@@ -111,7 +110,13 @@ function ErrandCard({
                 Modify your errands here and start tracking today.
               </DialogDescription>
             </DialogHeader>
-            <ErrandEditForm {...dataItem} />
+            <ErrandForm
+              categoryList={categoryList}
+              dataItem={dataItem}
+              setNotification={setNotification}
+              setDialogOpen={setDialogOpen}
+              formType="edit"
+            />
           </DialogContent>
         </Dialog>
       </CardContent>

@@ -28,7 +28,6 @@ import {
 import { CategorySearch } from "../../ui/categorysearch";
 import { SelectDays, SelectDaysOfMonth } from "./SelectDaysToggle";
 
-import getCategoryList from "../../../../sample-data/getCategoryList.json";
 import {
   Popover,
   PopoverContent,
@@ -36,46 +35,45 @@ import {
 } from "@/components/ui/popover";
 import { CalendarIcon } from "lucide-react";
 import { JSX } from "react/jsx-runtime";
+import moment from "moment";
+import { addNewErrand, deleteErrand, editErrand } from "@/lib/firebase/errands";
+import { auth } from "@/lib/firebase/config";
+import { FormSchema } from "@/lib/formSchema";
+import { ErrandItemProps } from "@/lib/interface";
+import Icon from "@/components/Icon";
 
-const FormSchema = z.object({
-  title: z.string().min(1, {
-    message: "Errand title is required.",
-  }),
-  notes: z.string().optional(),
-  status: z.string(),
-  category: z.string().min(1, {
-    message: "Category is required.",
-  }),
-  dueDate: z.date().optional(),
-  startDate: z.date({
-    required_error: "Date is required.",
-  }),
-  repeat: z.string().min(1, {
-    message: "Repeat is required.",
-  }),
-  repeatDayOfWeek: z.array(z.string()).nonempty({
-    message: "Must select at least 1 day to repeat weekly.",
-  }),
-  repeatDayOfMonth: z.array(z.number()).nonempty({
-    message: "Must select at least 1 day to repeat monthly.",
-  }),
-});
-
-export default function ErrandForm() {
-  const categoryList = getCategoryList;
+export default function ErrandForm({
+  setDialogOpen,
+  setNotification,
+  categoryList,
+  formType,
+  dataItem,
+}: {
+  setDialogOpen?: (isFormOpen: boolean) => void;
+  setNotification: (notifText: string, isSuccess?: boolean) => void;
+  categoryList?: string[];
+  formType?: string;
+  dataItem?: ErrandItemProps;
+}) {
+  const [isSaving, setIsSaving] = useState(false);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      title: "",
-      notes: "",
-      status: "todo",
-      category: "",
-      dueDate: undefined,
-      startDate: new Date(),
-      repeat: "none",
-      repeatDayOfWeek: ["Mon"],
-      repeatDayOfMonth: [1],
+      id: dataItem ? dataItem.id : "",
+      user:
+        auth.currentUser?.email === null ? undefined : auth.currentUser?.email,
+      title: dataItem ? dataItem.title : "",
+      notes: dataItem ? dataItem.notes : "",
+      status: dataItem ? dataItem.status : "todo",
+      category: dataItem ? dataItem.category : "",
+      dueDate: dataItem ? dataItem.title : "",
+      startDate: dataItem ? dataItem.startDate : "",
+      time: dataItem ? dataItem.time : "",
+      repeat: dataItem ? dataItem.repeat : "none",
+      repeatDayOfWeek: dataItem ? dataItem.repeatDayOfWeek : ["Mon"],
+      repeatDayOfMonth: dataItem ? dataItem.repeatDayOfMonth : [1],
+      addedDate: new Date(),
     },
   });
 
@@ -84,15 +82,46 @@ export default function ErrandForm() {
     form.getValues("repeatDayOfMonth")
   );
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(JSON.stringify(data, null, 2));
-  }
+  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    setIsSaving(true);
+    try {
+      if (formType === "edit") {
+        await editErrand(data as any);
+      } else {
+        await addNewErrand(data as any);
+      }
+
+      setDialogOpen && setDialogOpen(false);
+      setIsSaving(false);
+      setNotification("Successfuly saved errand.", true);
+      //getErrandList();
+    } catch (err) {
+      setIsSaving(false);
+      setNotification("Failed to save errand.", false);
+      console.error(err);
+    }
+  };
+
+  const onDelete = async () => {
+    setIsSaving(true);
+    try {
+      await deleteErrand(form.getValues().id!);
+      setDialogOpen && setDialogOpen(false);
+      setIsSaving(false);
+      setNotification("Successfuly deleted errand.", true);
+      //getErrandList();
+    } catch (err) {
+      setIsSaving(false);
+      setNotification("Failed to delete errand.", false);
+      console.error(err);
+    }
+  };
 
   const handleCategory = (selectedCategory: string) => {
     if (
-      selectedCategory === "daily" ||
-      selectedCategory === "weekly" ||
-      selectedCategory === "monthly"
+      selectedCategory === "Daily" ||
+      selectedCategory === "Weekly" ||
+      selectedCategory === "Monthly"
     ) {
       handleRepeat(selectedCategory);
     } else {
@@ -101,24 +130,28 @@ export default function ErrandForm() {
     form.setValue("category", selectedCategory);
   };
 
-  const handleDueDate = (selectedDate?: Date) => {
+  const handleDueDate = (selectedDate?: string) => {
     if (selectedDate !== undefined) {
-      console.log(selectedDate);
       form.setValue("dueDate", selectedDate);
     }
   };
+  const handleTime = (selectedTime?: string) => {
+    if (selectedTime !== undefined) {
+      form.setValue("time", selectedTime);
+    }
+  };
 
-  const handleStartDate = (selectedDate?: Date) => {
+  const handleStartDate = (selectedDate?: string) => {
     if (selectedDate !== undefined) {
       form.setValue("startDate", selectedDate);
     }
   };
 
   const handleRepeat = (selectedRepeat: string) => {
-    if (selectedRepeat !== "weekly") {
+    if (selectedRepeat !== "Weekly") {
       form.getValues("repeatDayOfWeek").length === 0 && handleSelectDays("Mon");
     }
-    if (selectedRepeat !== "monthly") {
+    if (selectedRepeat !== "Monthly") {
       form.getValues("repeatDayOfMonth").length === 0 &&
         handleSelectMonthlyDays(1);
     }
@@ -217,6 +250,7 @@ export default function ErrandForm() {
                 <CategorySearch
                   categoryList={categoryList}
                   handleSelect={handleCategory}
+                  selectedValue={form.getValues("category")}
                   className="w-full"
                 />
               </FormControl>
@@ -235,9 +269,9 @@ export default function ErrandForm() {
                 onValueChange={handleRepeat}
                 defaultValue={form.getValues("repeat")}
                 value={form.getValues("repeat")}
-                {...(form.getValues("category") === "daily" ||
-                form.getValues("category") === "weekly" ||
-                form.getValues("category") === "monthly"
+                {...(form.getValues("category") === "Daily" ||
+                form.getValues("category") === "Weekly" ||
+                form.getValues("category") === "Monthly"
                   ? { disabled: true }
                   : { disabled: false })}
               >
@@ -253,9 +287,9 @@ export default function ErrandForm() {
                 </FormControl>
                 <SelectContent>
                   <SelectItem value="none">None</SelectItem>
-                  <SelectItem value="daily">Daily</SelectItem>
-                  <SelectItem value="weekly">Weekly</SelectItem>
-                  <SelectItem value="monthly">Monthly</SelectItem>
+                  <SelectItem value="Daily">Daily</SelectItem>
+                  <SelectItem value="Weekly">Weekly</SelectItem>
+                  <SelectItem value="Monthly">Monthly</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -271,7 +305,11 @@ export default function ErrandForm() {
               <FormItem className="flex flex-col">
                 <FormLabel>Due Date</FormLabel>
                 <FormControl>
-                  <DatePicker className="w-full" handleSelect={handleDueDate} />
+                  <DatePicker
+                    className="w-full"
+                    handleSelect={handleDueDate}
+                    handleSelectTime={handleTime}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -290,7 +328,16 @@ export default function ErrandForm() {
                   <DatePicker
                     className="w-full"
                     handleSelect={handleStartDate}
-                    defaultDate={new Date()}
+                    handleSelectTime={handleTime}
+                    defaultDate={
+                      dataItem?.startDate
+                        ? moment(
+                            form.getValues("startDate") +
+                              "T" +
+                              form.getValues("time")
+                          ).toDate()
+                        : new Date()
+                    }
                   />
                 </FormControl>
                 <FormMessage />
@@ -299,7 +346,7 @@ export default function ErrandForm() {
           />
         )}
 
-        {repeatItem === "weekly" && (
+        {repeatItem === "Weekly" && (
           <FormField
             control={form.control}
             name="repeatDayOfWeek"
@@ -327,7 +374,7 @@ export default function ErrandForm() {
           />
         )}
 
-        {repeatItem === "monthly" && (
+        {repeatItem === "Monthly" && (
           <FormField
             control={form.control}
             name="repeatDayOfMonth"
@@ -373,8 +420,23 @@ export default function ErrandForm() {
         )}
 
         <div className="flex justify-end gap-3">
+          {formType === "edit" && (
+            <Button
+              variant="destructive"
+              type="button"
+              className="flex-center bg-destructive p-2 rounded-lg gap-1"
+              onClick={onDelete}
+            >
+              <Icon
+                name="Trash2"
+                size={20}
+                className="text-destructive-foreground"
+              />
+            </Button>
+          )}
+
           <Button type="submit" className="text-primary-foreground">
-            Save errand
+            {isSaving ? "Saving..." : "Save Errand"}
           </Button>
         </div>
       </form>

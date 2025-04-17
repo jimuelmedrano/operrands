@@ -1,18 +1,18 @@
 [
   {
-    "value": "daily",
+    "value": "Daily",
     "label": "Daily"
   },
   {
-    "value": "weekly",
+    "value": "Weekly",
     "label": "Weekly"
   },
   {
-    "value": "monthly",
+    "value": "Monthly",
     "label": "Monthly"
   },
   {
-    "value": "todo",
+    "value": "To do",
     "label": "To do"
   }
 ]

@@ -8,6 +8,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
+import { onSignInUserInfo } from "./user";
 
 export const doCreateUserWithEmailAndPassword = async (
   email: string,
@@ -32,7 +33,8 @@ export const doSignInWithEmailAndPassword = async (
 ) => {
   let response = "";
   await signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
+    .then(async (userInfo) => {
+      await onSignInUserInfo(userInfo.user.displayName, userInfo.user.email);
       response = "SUCCESS";
     })
     .catch((error) => {
@@ -44,9 +46,13 @@ export const doSignInWithEmailAndPassword = async (
 
 export const doSignInWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
-  const result = await signInWithPopup(auth, provider);
-  const user = result.user;
-  console.log(user);
+  await signInWithPopup(auth, provider)
+    .then(async (userInfo) => {
+      await onSignInUserInfo(userInfo.user.displayName, userInfo.user.email);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   // add user to firestore
 };
 

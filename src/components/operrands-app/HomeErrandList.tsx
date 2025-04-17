@@ -1,32 +1,24 @@
 import ErrandCard from "./ErrandItemCrud/ErrandCard";
 import { useState } from "react";
 import Icon from "../Icon";
+import { ErrandItemProps } from "@/lib/interface";
 
-interface ErrandListProps {
-  categoryTitle: string;
-  errands: {
-    id: number;
-    title: string;
-    notes: string;
-    status: string;
-    category: string;
-    startDate: string;
-    repeat: string;
-    repeatDayOfWeek: string[];
-    repeatDayOfMonth: number[];
-    dueDate?: string;
-  }[];
-}
-
-function HomeErrandList(data: { data: ErrandListProps }) {
+function HomeErrandList({
+  data,
+  category,
+  categoryList,
+  setNotification,
+}: {
+  data: ErrandItemProps[];
+  category: string;
+  categoryList?: string[];
+  setNotification: (notifText: string, isSuccess?: boolean) => void;
+}) {
   const [accordionOpen, setAccordionOpen] = useState(false);
-
   return (
     <div className="h-fit md:h-full bg-accent rounded-xl p-4">
       <div className="flex-between w-full">
-        <span className="text-foreground text-xl">
-          {data.data.categoryTitle}
-        </span>
+        <span className="text-foreground text-xl">{category}</span>
 
         <button
           onClick={() => setAccordionOpen(!accordionOpen)}
@@ -49,8 +41,13 @@ function HomeErrandList(data: { data: ErrandListProps }) {
         }
       >
         <div className={"flex flex-col gap-3 md:mt-5 overflow-hidden"}>
-          {data.data.errands.map((errandItem, index) => (
-            <ErrandCard key={index} dataItem={errandItem} />
+          {data.map((errandItem, index) => (
+            <ErrandCard
+              key={index}
+              dataItem={errandItem}
+              categoryList={categoryList}
+              setNotification={setNotification}
+            />
           ))}
         </div>
       </div>

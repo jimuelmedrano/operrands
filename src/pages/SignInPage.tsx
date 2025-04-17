@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   doSignInWithEmailAndPassword,
   doSignInWithGoogle,
-} from "@/firebase/auth";
+} from "@/lib/firebase/auth";
 
 const SignInPage = () => {
   const navigate = useNavigate();

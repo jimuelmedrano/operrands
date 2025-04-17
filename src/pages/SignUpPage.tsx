@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   doSignInWithGoogle,
   doCreateUserWithEmailAndPassword,
-} from "@/firebase/auth";
+} from "@/lib/firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
