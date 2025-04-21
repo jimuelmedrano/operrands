@@ -1,5 +1,5 @@
 import Icon from "@/components/Icon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DatePickerWithRange } from "@/components/ui/rangedatepicker";
 import { Input } from "@/components/ui/input";
 import { CategorySearch } from "@/components/ui/categorysearch";
@@ -7,12 +7,13 @@ import { CategorySearch } from "@/components/ui/categorysearch";
 import ErrandCard from "@/components/operrands-app/ErrandItemCrud/ErrandCard";
 import AddErrandButton from "@/components/operrands-app/ErrandItemCrud/AddErrandButton";
 
-import getCategoryList from "../../../sample-data/getCategoryList.json";
-import getAllErrands from "../../../sample-data/getAllErrands.json";
+import { getHomeErrands } from "@/lib/firebase/errands";
+import { getCategoryList } from "@/lib/firebase/categories";
+import { auth } from "@/lib/firebase/config";
+import { toast } from "sonner";
 
 const SearchPage = () => {
   const [search, setSearch] = useState("");
-  let allErrands = getAllErrands;
   const handleSearch = () => {
     //call search API
     setSearch(search);
@@ -21,7 +22,32 @@ const SearchPage = () => {
     //form.setValue("category", selectedCategory);
     console.log(selectedCategory);
   };
-  const categoryList = getCategoryList;
+  const [categories, setCategories] = useState(new Array());
+  const [errandsData, setErrandsData] = useState(new Array());
+
+  useEffect(() => {
+    getHomeErrands(auth.currentUser!.email!, setErrandsData);
+    getCategoryList(auth.currentUser!.email!, setCategories);
+  }, []);
+
+  const setNotification = (notifText: string, isSuccess?: boolean) => {
+    if (isSuccess) {
+      toast.success(notifText, {
+        position: "top-center",
+        className: "justify-center text-primary",
+      });
+    } else if (!isSuccess) {
+      toast.error(notifText, {
+        position: "top-center",
+        className: "justify-center text-destructive",
+      });
+    } else {
+      toast(notifText, {
+        position: "top-center",
+        className: "justify-center",
+      });
+    }
+  };
   return (
     <div>
       <div className="fixed top-12 md:top-10 left-0 z-10 bg-background py-10 pl-5 md:pl-[100px] pr-8 w-full grid grid-cols-1 md:grid-cols-1 lg:grid-flow-col gap-3 justify-between mb-10">
@@ -31,7 +57,10 @@ const SearchPage = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-flow-col md:auto-cols-min gap-3 pt-3 md:pt-0">
           <div className="flex gap-3">
-            <AddErrandButton />
+            <AddErrandButton
+              setNotification={setNotification}
+              categoryList={categories}
+            />
 
             <div
               className="flex relative w-80
@@ -67,16 +96,24 @@ const SearchPage = () => {
           </div>
           <DatePickerWithRange />
           <CategorySearch
-            categoryList={categoryList}
+            categoryList={categories}
             handleSelect={handleCategory}
           />
         </div>
       </div>
 
       <div className="mt-80 lg:mt-40 md:mt-60 w-full h-fit grid grid-cols-1 md:grid-cols-4 gap-y-3 md:gap-y-5 gap-x-3">
-        {allErrands.map((errandItem, index) => (
-          <ErrandCard key={index} dataItem={errandItem} />
-        ))}
+        {errandsData
+          .filter((errand) =>
+            JSON.stringify(errand).toLowerCase().includes(search.toLowerCase())
+          )
+          .map((errandItem, index) => (
+            <ErrandCard
+              key={index}
+              dataItem={errandItem}
+              setNotification={setNotification}
+            />
+          ))}
       </div>
     </div>
   );

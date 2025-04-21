@@ -16,24 +16,18 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-interface CategoryListProps {
-  value: string;
-  label: string;
-}
-
 export function CategorySearch({
   categoryList,
   selectedValue,
   handleSelect,
   className,
 }: {
-  categoryList: CategoryListProps[];
+  categoryList: string[] | undefined;
   selectedValue?: string;
   handleSelect: (newType: string) => void;
   className?: string;
 }) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
   const items = categoryList;
 
   return (
@@ -45,12 +39,8 @@ export function CategorySearch({
           aria-expanded={open}
           className={"w-52 justify-between " + className}
         >
-          {value ? (
-            <span>{items.find((item) => item.value === value)?.label}</span>
-          ) : selectedValue ? (
-            <span>
-              {items.find((item) => item.value === selectedValue)?.label}
-            </span>
+          {selectedValue ? (
+            <span>{selectedValue}</span>
           ) : (
             <span className="opacity-50 text-foreground">Select category</span>
           )}
@@ -66,20 +56,23 @@ export function CategorySearch({
           <CommandList>
             <CommandEmpty>No category found.</CommandEmpty>
             <CommandGroup>
-              {items.map((item) => (
-                <CommandItem
-                  key={item.value}
-                  value={item.value}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
-                    handleSelect(currentValue === value ? "" : currentValue);
+              {items ? (
+                items.map((item, index) => (
+                  <CommandItem
+                    key={index}
+                    value={item}
+                    onSelect={(currentValue) => {
+                      handleSelect(currentValue);
 
-                    setOpen(false);
-                  }}
-                >
-                  {item.label}
-                </CommandItem>
-              ))}
+                      setOpen(false);
+                    }}
+                  >
+                    {item}
+                  </CommandItem>
+                ))
+              ) : (
+                <></>
+              )}
             </CommandGroup>
           </CommandList>
         </Command>

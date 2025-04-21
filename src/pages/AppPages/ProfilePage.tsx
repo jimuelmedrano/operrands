@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { doSignOut } from "@/firebase/auth";
+import { doSignOut } from "@/lib/firebase/auth";
 const ProfilePage = () => {
   return (
     <div className="mt-20 w-full h-full">

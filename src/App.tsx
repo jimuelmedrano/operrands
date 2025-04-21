@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import RootLayout from "./pages/RootLayout";
-import LandingPage from "./pages/LandingPage";
+//import LandingPage from "./pages/LandingPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import AppPage from "./pages/AppPage";
@@ -14,13 +14,11 @@ import SearchPage from "./pages/AppPages/SearchPage";
 import CategoriesPage from "./pages/AppPages/CategoriesPage";
 import ProfilePage from "./pages/AppPages/ProfilePage";
 import AuthRoute from "./pages/AuthRoute";
-import { app } from "./firebase/config";
 
 import NotFoundPage from "./pages/NotFoundPage";
 import ForgotPassPage from "./pages/ForgotPassPage";
 
 const App = () => {
-  app;
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
@@ -28,7 +26,7 @@ const App = () => {
           index
           element={
             <AuthRoute>
-              <LandingPage />
+              <SignInPage />
             </AuthRoute>
           }
         />

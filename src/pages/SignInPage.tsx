@@ -1,16 +1,13 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import {
+  doSignInWithEmailAndPassword,
+  doSignInWithGoogle,
+} from "@/lib/firebase/auth";
 
 const SignInPage = () => {
-  const auth = getAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -19,39 +16,26 @@ const SignInPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const signInWithGoogle = async () => {
-    setIsSigningIn(true);
-
     // Use Firebase to sign in with Google
-    await signInWithPopup(auth, new GoogleAuthProvider())
+    await doSignInWithGoogle()
       .then(() => {
-        //console.log(response.user.uid);
         navigate("/app");
       })
       .catch((error) => {
         console.log(error);
-        setIsSigningIn(false);
       });
   };
 
   // Use Firebase to sign in with email and password
   const signInWithEmail = async () => {
     setIsSigningIn(true);
-    setErrorMessage("");
-
-    await signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        //console.log(response.user.uid);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-        setErrorMessage(error.message);
-        setIsSigningIn(false);
-      });
+    const resp = await doSignInWithEmailAndPassword(email, password);
+    setIsSigningIn(false);
+    resp === "SUCCESS" ? navigate("/app") : setErrorMessage(resp);
   };
 
   return (
-    <div className="flex-center h-full">
+    <div className="flex-center h-[100vh]">
       <div className="w-3/4 sm:w-1/2 xl:w-1/4 p-5 border border-primary rounded-xl">
         <div className="flex flex-col gap-3">
           <a href="/" className="text-2xl mb-5">

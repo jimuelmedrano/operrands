@@ -10,14 +10,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import moment from "moment";
 
 export function DatePicker({
   handleSelect,
+  handleSelectTime,
   defaultDate,
   className,
 }: {
-  handleSelect: (newType?: Date) => void;
+  handleSelect: (newType?: string) => void;
+  handleSelectTime: (newType?: string) => void;
   defaultDate?: Date;
+  defaultTime?: string;
   className?: string;
 }) {
   const [date, setDate] = React.useState<Date | undefined>(defaultDate);
@@ -48,7 +52,8 @@ export function DatePicker({
           selected={date}
           onSelect={(currentValue) => {
             setDate(currentValue);
-            handleSelect(currentValue);
+            handleSelect(moment(currentValue).toISOString().split("T")[0]);
+            handleSelectTime(moment(currentValue).toISOString().split("T")[1]);
           }}
         />
       </PopoverContent>

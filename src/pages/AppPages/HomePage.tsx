@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Icon from "../../components/Icon";
 import BentoMetrics from "../../components/operrands-app/BentoMetrics";
 import HomeErrandList from "../../components/operrands-app/HomeErrandList";
-import getHomeErrands from "../../../sample-data/getHomeErrands.json";
+import { auth } from "@/lib/firebase/config";
+import { getHomeErrands } from "@/lib/firebase/errands";
+import { getCategoryList } from "@/lib/firebase/categories";
 
 import AddErrandButton from "@/components/operrands-app/ErrandItemCrud/AddErrandButton";
 
@@ -11,16 +13,32 @@ import { toast } from "sonner";
 
 const HomePage = () => {
   const [search, setSearch] = useState("");
+  const [categories, setCategories] = useState(new Array());
+  const [errandsData, setErrandsData] = useState(new Array());
 
-  const errandsHomeData = getHomeErrands;
   useEffect(() => {
-    setTimeout(() => {
-      toast("Note: This website is currently a work in progress.", {
+    getHomeErrands(auth.currentUser!.email!, setErrandsData);
+    getCategoryList(auth.currentUser!.email!, setCategories);
+  }, []);
+
+  const setNotification = (notifText: string, isSuccess?: boolean) => {
+    if (isSuccess) {
+      toast.success(notifText, {
+        position: "top-center",
+        className: "justify-center text-primary",
+      });
+    } else if (!isSuccess) {
+      toast.error(notifText, {
+        position: "top-center",
+        className: "justify-center text-destructive",
+      });
+    } else {
+      toast(notifText, {
         position: "top-center",
         className: "justify-center",
       });
-    }, 100);
-  }, []);
+    }
+  };
 
   return (
     <div className="mt-20 h-full flex flex-col">
@@ -28,7 +46,9 @@ const HomePage = () => {
         <div className="flex flex-col justify-between h-32 md:h-full basis-full md:basis-1/2">
           <div>
             <span className="text-2xl text-foreground">Hello, </span>
-            <span className="text-2xl text-primary">Jimuel Medrano</span>
+            <span className="text-2xl text-primary">
+              {auth.currentUser?.displayName}
+            </span>
             <br />
             <span className="text-sm text-foreground">
               Level up your day by clearing your errands
@@ -49,10 +69,8 @@ const HomePage = () => {
               />
               <button
                 className={
-                  "absolute right-0 px-3 py-2 rounded-lg " +
-                  (search === "" ? "bg-transparent" : "bg-primary")
+                  "absolute right-0 px-3 py-2 rounded-lg bg-transparent"
                 }
-                {...(search === "" ? { disabled: true } : {})}
               >
                 <Icon
                   name="Search"
@@ -65,7 +83,10 @@ const HomePage = () => {
                 />
               </button>
             </div>
-            <AddErrandButton />
+            <AddErrandButton
+              setNotification={setNotification}
+              categoryList={categories}
+            />
           </div>
         </div>
         <div className="basis-0 md:basis-1/2 hidden md:flex items-center justify-end">
@@ -73,8 +94,20 @@ const HomePage = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-3 grow">
-        {errandsHomeData.map((errandCategory, index) => (
-          <HomeErrandList key={index} data={errandCategory} />
+        {categories.map((errandCategory, index) => (
+          <HomeErrandList
+            key={index}
+            category={errandCategory}
+            categoryList={categories}
+            data={errandsData
+              .filter((errand) => errand.category === errandCategory)
+              .filter((errand) =>
+                JSON.stringify(errand)
+                  .toLowerCase()
+                  .includes(search.toLowerCase())
+              )}
+            setNotification={setNotification}
+          />
         ))}
       </div>
     </div>
