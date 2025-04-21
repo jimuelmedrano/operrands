@@ -26,7 +26,7 @@ const App = () => {
           index
           element={
             <AuthRoute>
-              <LandingPage />
+              <SignInPage />
             </AuthRoute>
           }
         />

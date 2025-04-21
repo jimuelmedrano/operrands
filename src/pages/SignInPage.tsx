@@ -35,7 +35,7 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="flex-center h-full">
+    <div className="flex-center h-[100vh]">
       <div className="w-3/4 sm:w-1/2 xl:w-1/4 p-5 border border-primary rounded-xl">
         <div className="flex flex-col gap-3">
           <a href="/" className="text-2xl mb-5">
